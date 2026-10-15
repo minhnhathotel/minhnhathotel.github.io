@@ -7,7 +7,7 @@
 <meta name="description" content="Minh Nhật Luxury Hotel – 57 Nguyễn Đình Chiểu, Võ Cường, Bắc Ninh. Phòng VIP, phòng đôi, phòng thường. Đặt phòng: 0222 222 5678.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="icon" type="image/svg+xml" href="images/logo-icon.svg">
+<link rel="icon" type="image/png" href="images/logo-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&family=Josefin+Sans:wght@300&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -15,7 +15,7 @@
     --cream:#fbf6ef; --ink:#2a1d1d; --muted:#6f5f5c; --line:#eadfd3; --white:#fff;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:auto}
   body{font-family:"Be Vietnam Pro",system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
@@ -31,7 +31,10 @@
   .logo div{display:flex;flex-direction:column}
   .logo b{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:700;color:#E9A060;letter-spacing:.08em}
   .logo span{font-family:"Josefin Sans",sans-serif;font-weight:300;font-size:.62rem;letter-spacing:.38em;margin-top:4px;color:#E9A060}
-  .menu{display:flex;gap:28px;font-weight:500;font-size:.95rem}
+  .menu{display:flex;gap:26px;font-weight:500;font-size:.95rem;white-space:nowrap}
+  .nav .btn{white-space:nowrap}
+  .logo{white-space:nowrap}
+  .hero-inner>*,.tiles>*{min-width:0}
   .menu a:hover{color:var(--orange-2)}
   .btn{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;font-weight:700;padding:12px 22px;border-radius:999px;transition:.2s}
   .btn:hover{background:var(--orange-2);transform:translateY(-1px)}
@@ -42,14 +45,14 @@
   /* Hero */
   .hero{position:relative;color:#fff;overflow:hidden;
     background:
-      linear-gradient(100deg,rgba(44,11,14,.94) 0%,rgba(78,21,25,.82) 50%,rgba(44,11,14,.55) 100%),
-      url("images/vip-1.jpg") center/cover,
+      linear-gradient(100deg,rgba(44,11,14,.94) 0%,rgba(78,21,25,.8) 50%,rgba(44,11,14,.5) 100%),
+      url("images/vip-3.jpg") center/cover,
       linear-gradient(135deg,var(--maroon) 0%,#2c0b0e 100%)}
   .hero-logo{width:120px;height:120px;margin-bottom:18px}
   .hero h1.brand{font-family:"Cormorant Garamond",serif;font-weight:700;color:#E9A060;letter-spacing:.06em}
   .hero h1.brand small{font-family:"Josefin Sans",sans-serif;font-weight:300;color:#E9A060;letter-spacing:.45em}
   .hero::after{content:"";position:absolute;right:-120px;bottom:-120px;width:420px;height:420px;border:2px solid rgba(232,144,42,.4);transform:rotate(45deg)}
-  .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:80px 0 90px}
+  .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:56px 0 64px}
   .eyebrow{display:inline-block;color:var(--orange-2);font-weight:600;letter-spacing:.2em;font-size:.8rem;text-transform:uppercase;margin-bottom:14px}
   .hero h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:800;color:var(--orange)}
   .hero h1 small{display:block;color:#fff;font-size:.45em;letter-spacing:.3em;margin-top:8px}
@@ -61,6 +64,31 @@
   .hero-card li{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.2)}
   .hero-card li:last-child{border:0}
   .hero-card strong{color:var(--orange-2)}
+
+  /* Trang con */
+  [hidden]{display:none!important}
+  .page:not(#trang-chu){padding-top:36px;scroll-margin-top:68px}
+  body{min-height:100vh;display:flex;flex-direction:column}
+  footer{margin-top:auto}
+  .back{display:inline-flex;align-items:center;gap:6px;color:var(--maroon);font-weight:600;font-size:.95rem;padding:8px 16px 8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;margin-bottom:24px;transition:.2s}
+  .back:hover{border-color:var(--orange);color:var(--orange)}
+  #trang-gio .back{background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}
+  .menu a.active{color:var(--orange-2)}
+
+  /* Ô mục trang chủ */
+  #muc{padding:50px 0 60px}
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .tile{position:relative;height:250px;border-radius:18px;overflow:hidden;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;
+    background:linear-gradient(to top,rgba(44,11,14,.92),rgba(44,11,14,.2) 75%),var(--img,none) center/cover,linear-gradient(135deg,var(--maroon-2),var(--maroon));transition:.25s}
+  .tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(78,21,25,.25)}
+  .tile .ic{position:absolute;top:16px;left:18px;font-size:1.8rem;line-height:1}
+  .tile .arrow{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-weight:700;transition:.25s}
+  .tile:hover .arrow{transform:translateX(3px)}
+  .tile b{font-size:1.15rem}
+  .tile small{color:#f0dcd4;font-size:.85rem}
+  .tile.book{background:linear-gradient(135deg,var(--orange),#c4651a)}
+  .tile.book small{color:#fff3e6}
+  .tile.book .arrow{background:#fff;color:var(--orange)}
 
   /* Sections */
   section{padding:80px 0}
@@ -77,7 +105,7 @@
   .feature p{color:var(--muted);font-size:.92rem}
 
   /* Rooms */
-  #phong{background:#fff}
+  #trang-phong{background:#fff}
   .rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
   .room{border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;background:var(--cream);transition:.25s}
   .room:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(78,21,25,.12)}
@@ -122,9 +150,9 @@
   .flyer{margin:36px auto 0;max-width:760px;border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.12)}
 
   /* Time */
-  #gio{background:linear-gradient(135deg,var(--maroon),#2c0b0e);color:#fff}
-  #gio .head h2{color:#fff}
-  #gio .head p{color:#e9d9d3}
+  #trang-gio{background:linear-gradient(135deg,var(--maroon),#2c0b0e);color:#fff}
+  #trang-gio .head h2{color:#fff}
+  #trang-gio .head p{color:#e9d9d3}
   .times{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
   .time{border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:28px;background:rgba(255,255,255,.05)}
   .time h3{color:var(--orange-2);margin-bottom:16px}
@@ -150,7 +178,7 @@
   .legend i{width:18px;height:18px;border-radius:5px;display:inline-block}
 
   /* Contact */
-  #lien-he{background:#fff}
+  #trang-lien-he{background:#fff}
   .contact{display:grid;grid-template-columns:1fr 1.2fr;gap:30px;align-items:stretch}
   .info{background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:30px}
   .info .item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
@@ -178,6 +206,7 @@
     .rooms,.times{grid-template-columns:1fr}
     .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px}
     .features{grid-template-columns:repeat(2,1fr)}
+    .tiles{grid-template-columns:repeat(2,1fr)}
     .rules{grid-template-columns:1fr}
     .menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--maroon);flex-direction:column;gap:0;padding:8px 16px 16px}
     .menu.open{display:flex}
@@ -188,6 +217,11 @@
   @media (max-width:560px){
     section{padding:60px 0}
     .features{grid-template-columns:1fr}
+    .tiles{gap:10px}
+    .tile{height:150px;padding:14px}
+    .tile b{font-size:1rem}
+    .tile small{font-size:.78rem}
+    .hero-card{display:none}
     .gallery{grid-template-columns:1fr}
     .gallery figure.wide{grid-column:auto}
     .floor{grid-template-columns:52px repeat(5,1fr);gap:6px}
@@ -200,14 +234,13 @@
 
 <header>
   <div class="container nav">
-    <a href="#" class="logo"><img src="images/logo-icon.svg" alt=""><div><b>MINH NHẬT</b><span>LUXURY HOTEL</span></div></a>
+    <a href="#" class="logo"><img src="images/logo-icon.png" alt=""><div><b>MINH NHẬT</b><span>LUXURY HOTEL</span></div></a>
     <nav class="menu" id="menu">
-      <a href="#gioi-thieu">Giới thiệu</a>
+      <a href="#">Trang chủ</a>
       <a href="#phong">Phòng</a>
       <a href="#hinh-anh">Hình ảnh</a>
       <a href="#bang-gia">Bảng giá</a>
       <a href="#gio">Giờ nhận/trả</a>
-      <a href="#so-do">Sơ đồ phòng</a>
       <a href="#lien-he">Liên hệ</a>
     </nav>
     <a href="tel:02222225678" class="btn">📞 0222 222 5678</a>
@@ -215,11 +248,12 @@
   </div>
 </header>
 
-<!-- HERO -->
+<!-- TRANG CHỦ -->
+<div class="page" id="trang-chu" data-group="chu">
 <section class="hero">
   <div class="container hero-inner">
     <div>
-      <img class="hero-logo" src="images/logo-icon.svg" alt="Logo Minh Nhật Luxury Hotel">
+      <img class="hero-logo" src="images/logo-icon.png" alt="Logo Minh Nhật Luxury Hotel">
       <span class="eyebrow">Khách sạn tại Bắc Ninh</span>
       <h1 class="brand">MINH NHẬT<small>LUXURY HOTEL</small></h1>
       <p>Không gian sang trọng, phòng được trang trí tinh tế, phục vụ tận tâm. Thuê theo giờ, nghỉ đêm hoặc nghỉ ngày, giá rõ ràng.</p>
@@ -240,9 +274,22 @@
   </div>
 </section>
 
-<!-- GIỚI THIỆU -->
-<section id="gioi-thieu">
+<section id="muc">
   <div class="container">
+    <div class="tiles">
+      <a href="#gioi-thieu" class="tile" style="--img:url('images/toa-nha.jpg');background-position:center,center 65%,center"><span class="arrow">→</span><b>Giới thiệu &amp; Liên hệ</b><small>Địa chỉ, bản đồ, hotline</small></a>
+      <a href="#phong" class="tile" style="--img:url('images/vip-4.jpg')"><span class="arrow">→</span><b>Các loại phòng</b><small>VIP · Đôi · Thường · Sơ đồ phòng</small></a>
+      <a href="#hinh-anh" class="tile" style="--img:url('images/vip-2.jpg')"><span class="arrow">→</span><b>Hình ảnh</b><small>Không gian các phòng</small></a>
+      <a href="#bang-gia" class="tile" style="--img:url('images/vip-5.jpg')"><span class="arrow">→</span><b>Bảng giá &amp; Giờ nhận/trả</b><small>Nghỉ đêm 20:00 – 10:00</small></a>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- GIỚI THIỆU -->
+<section id="trang-gioi-thieu" class="page" data-group="gioi-thieu" hidden>
+  <div class="container">
+    <a href="#" class="back">← Trang chủ</a>
     <div class="head">
       <span class="eyebrow">Về chúng tôi</span>
       <h2 class="serif">Chào mừng đến Minh Nhật Luxury Hotel</h2>
@@ -258,8 +305,9 @@
 </section>
 
 <!-- PHÒNG -->
-<section id="phong">
+<section id="trang-phong" class="page" data-group="phong" hidden>
   <div class="container">
+    <a href="#" class="back">← Trang chủ</a>
     <div class="head">
       <span class="eyebrow">Hạng phòng</span>
       <h2 class="serif">Chọn phòng phù hợp với bạn</h2>
@@ -312,8 +360,9 @@
 </section>
 
 <!-- HÌNH ẢNH -->
-<section id="hinh-anh">
+<section id="trang-hinh-anh" class="page" data-group="hinh-anh" hidden>
   <div class="container">
+    <a href="#" class="back">← Trang chủ</a>
     <div class="head">
       <span class="eyebrow">Hình ảnh</span>
       <h2 class="serif">Không gian phòng</h2>
@@ -332,8 +381,9 @@
 <div class="lightbox" id="lightbox"><img alt=""></div>
 
 <!-- BẢNG GIÁ -->
-<section id="bang-gia">
+<section id="trang-bang-gia" class="page" data-group="bang-gia" hidden>
   <div class="container">
+    <a href="#" class="back">← Trang chủ</a>
     <div class="head">
       <span class="eyebrow">Bảng giá</span>
       <h2 class="serif">Giá phòng</h2>
@@ -359,7 +409,7 @@
 
 <!-- GIỜ NHẬN / TRẢ PHÒNG -->
 <!-- LƯU Ý: Giờ nhận phòng nghỉ ngày (14:00) là giờ tạm, cần khách sạn xác nhận lại -->
-<section id="gio">
+<section id="trang-gio" class="page" data-group="bang-gia" hidden>
   <div class="container">
     <div class="head">
       <span class="eyebrow">Thời gian</span>
@@ -396,7 +446,7 @@
 </section>
 
 <!-- SƠ ĐỒ PHÒNG -->
-<section id="so-do">
+<section id="trang-so-do" class="page" data-group="phong" hidden>
   <div class="container">
     <div class="head">
       <span class="eyebrow">Sơ đồ</span>
@@ -413,7 +463,7 @@
 </section>
 
 <!-- LIÊN HỆ -->
-<section id="lien-he">
+<section id="trang-lien-he" class="page" data-group="gioi-thieu" hidden>
   <div class="container">
     <div class="head">
       <span class="eyebrow">Liên hệ</span>
@@ -480,6 +530,28 @@
   });
   lb.addEventListener('click', () => lb.classList.remove('open'));
   document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => document.getElementById('menu').classList.remove('open')));
+
+  // Chuyển trang: các phần cùng data-group hiện chung một trang, địa chỉ dạng #phong, #bang-gia...
+  // Link tới phần phụ (#lien-he, #so-do, #gio) mở trang chứa nó rồi cuộn tới phần đó.
+  const pages = [...document.querySelectorAll('.page')];
+  const groupOf = h => { const el = document.getElementById('trang-' + h); return el && el.dataset.group ? el.dataset.group : 'chu'; };
+  function route(){
+    const hash = location.hash.slice(1);
+    const group = groupOf(hash);
+    pages.forEach(p => p.hidden = p.dataset.group !== group);
+    document.querySelectorAll('#menu a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href').slice(1) === (group === 'chu' ? '' : hash));
+    });
+    const go = () => {
+      const target = document.getElementById('trang-' + hash);
+      const first = pages.find(p => p.dataset.group === group);
+      if (target && target !== first) target.scrollIntoView();
+      else window.scrollTo(0, 0);
+    };
+    go(); setTimeout(go, 0); // chặn trình duyệt tự cuộn sai chỗ
+  }
+  addEventListener('hashchange', route);
+  route();
 </script>
 </body>
 </html>
