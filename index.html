@@ -1150,6 +1150,16 @@
       });
     });
   }
+  // Link trang Facebook: trong Zalo (Android) mở thẳng app Facebook thay vì tải trang trong Zalo.
+  // Máy không có app Facebook thì tự quay về bản web.
+  if (isAndroid && inApp) {
+    const fbWeb = 'https://www.facebook.com/' + FB_USER;
+    const fbIntent = 'intent://page/' + FB_PAGE_ID + '#Intent;scheme=fb;package=com.facebook.katana;S.browser_fallback_url=' + encodeURIComponent(fbWeb) + ';end';
+    document.querySelectorAll('a[href^="https://www.facebook.com/"]').forEach(a => {
+      a.removeAttribute('target');
+      a.addEventListener('click', e => { e.preventDefault(); location.href = fbIntent; });
+    });
+  }
   const help = document.getElementById('inapp-help');
   help.addEventListener('click', e => { if (e.target === help || e.target.closest('.ih-close')) help.hidden = true; });
   help.querySelector('.ih-copy').addEventListener('click', e => {
