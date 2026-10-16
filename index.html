@@ -330,6 +330,19 @@
     .cell{font-size:.9rem;padding:10px 2px}
     .cell small{font-size:.6rem}
   }
+  /* Hộp hướng dẫn khi mở web trong Zalo */
+  .ih{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center;padding:12px}
+  .ih[hidden]{display:none}
+  .ih-box{position:relative;background:#fff;border-radius:18px;padding:22px 20px 20px;max-width:420px;width:100%;margin-bottom:8px}
+  .ih-box h3{color:var(--maroon);margin-bottom:8px;font-size:1.15rem}
+  .ih-box p,.ih-box li{font-size:.92rem;color:var(--ink)}
+  .ih-box ol{padding-left:20px;margin:8px 0 12px;display:grid;gap:6px}
+  .ih-close{position:absolute;top:10px;right:12px;border:0;background:none;font-size:1.6rem;line-height:1;color:var(--muted);cursor:pointer}
+  .ih-link{display:flex;gap:6px;margin-bottom:12px}
+  .ih-link input{flex:1;min-width:0;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;font-size:.88rem;background:var(--cream)}
+  .ih-copy{border:0;border-radius:10px;padding:10px 14px;background:var(--maroon);color:#fff;font:inherit;font-weight:700;font-size:.85rem;cursor:pointer;white-space:nowrap}
+  .ih-call{width:100%;justify-content:center}
+
   /* ===== Tối ưu điện thoại ===== */
   .mbar{display:none}
   @media (max-width:560px){
@@ -419,6 +432,12 @@
     .mbar .call{background:#fff;color:var(--maroon);border:2px solid var(--maroon)}
     .mbar .chat{background:#0084ff;color:#fff}
     footer{padding-bottom:84px}
+
+    /* Thanh trên chỉ hiện khi gần đầu trang, thanh dưới chỉ hiện khi gần cuối trang */
+    header{transition:transform .3s ease}
+    body.hide-top header{transform:translateY(-100%)}
+    .mbar{transform:translateY(110%);transition:transform .3s ease}
+    body.show-bar .mbar{transform:none}
   }
 </style>
 </head>
@@ -1036,6 +1055,19 @@
 <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="msg-float" aria-label="Nhắn tin Messenger">
   <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.14.26.35.27.57l.05 1.78c.02.57.6.94 1.12.71l1.98-.87c.17-.08.36-.09.54-.04.91.25 1.87.38 2.9.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm6 7.46-2.94 4.66c-.47.74-1.47.93-2.17.4l-2.34-1.75a.6.6 0 0 0-.72 0l-3.16 2.4c-.42.32-.97-.18-.69-.63l2.94-4.66c.47-.74 1.47-.93 2.17-.4l2.34 1.75c.21.16.51.16.72 0l3.16-2.4c.42-.32.97.18.69.63z"/></svg>
 </a>
+<div class="ih" id="inapp-help" hidden>
+  <div class="ih-box" role="dialog" aria-label="Hướng dẫn nhắn tin">
+    <button class="ih-close" aria-label="Đóng">×</button>
+    <h3>Mở Messenger để nhắn tin</h3>
+    <p>Ứng dụng bạn đang dùng (ví dụ Zalo) không cho mở Messenger trực tiếp. Bạn có thể:</p>
+    <ol>
+      <li>Bấm dấu <b>⋮</b> hoặc <b>•••</b> ở góc trên màn hình, chọn <b>“Mở bằng trình duyệt”</b>, rồi bấm lại nút nhắn tin.</li>
+      <li>Hoặc sao chép link dưới đây, dán vào Chrome:</li>
+    </ol>
+    <div class="ih-link"><input readonly value="https://minhnhathotel.github.io"><button class="ih-copy">Sao chép</button></div>
+    <a href="tel:02222225678" class="btn ih-call"><svg class="bi" aria-hidden="true"><use href="#b-phone"/></svg>Hoặc gọi ngay 0222 222 5678</a>
+  </div>
+</div>
 <nav class="mbar" aria-label="Đặt phòng nhanh">
   <a href="tel:02222225678" class="call"><svg class="bi" aria-hidden="true"><use href="#b-phone"/></svg>Gọi ngay</a>
   <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="chat"><svg class="bi" aria-hidden="true"><use href="#b-chat"/></svg>Nhắn tin đặt phòng</a>
@@ -1100,6 +1132,44 @@
     });
   }
 
+  // Android mở web bên trong app khác (Zalo, TikTok, Instagram, Line…): trình duyệt trong app
+  // không mở được m.me (hiện trang trắng). Gọi thẳng app Messenger bằng intent; nếu bị chặn
+  // thì hiện hướng dẫn mở bằng trình duyệt hoặc gọi điện.
+  const isAndroid = /Android/i.test(navigator.userAgent);
+  const inApp = /Zalo|ZaloTheme|BytedanceWebview|musical_ly|TikTok|Instagram|Line\/|KAKAOTALK|; wv\)/i.test(navigator.userAgent)
+             && !/FBAN|FBAV|FB_IAB|Messenger/i.test(navigator.userAgent);
+  if (isAndroid && inApp) {
+    const intentUrl = 'intent://user/' + FB_PAGE_ID + '/#Intent;scheme=fb-messenger;package=com.facebook.orca;end';
+    document.querySelectorAll('a[href^="https://m.me/"]').forEach(a => {
+      a.removeAttribute('target');
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const start = Date.now();
+        location.href = intentUrl;
+        setTimeout(() => { if (!document.hidden && Date.now() - start < 3500) document.getElementById('inapp-help').hidden = false; }, 1800);
+      });
+    });
+  }
+  const help = document.getElementById('inapp-help');
+  help.addEventListener('click', e => { if (e.target === help || e.target.closest('.ih-close')) help.hidden = true; });
+  help.querySelector('.ih-copy').addEventListener('click', e => {
+    const input = help.querySelector('input'); input.select();
+    try { navigator.clipboard.writeText(input.value); } catch (_) { document.execCommand('copy'); }
+    e.target.textContent = 'Đã sao chép ✓';
+  });
+
+  // Điện thoại: ẩn thanh trên khi đã cuộn xuống, chỉ hiện thanh đặt phòng dưới khi gần cuối trang
+  const menuEl = document.getElementById('menu');
+  function updateBars(){
+    const y = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
+    document.body.classList.toggle('hide-top', y > 120 && !menuEl.classList.contains('open'));
+    document.body.classList.toggle('show-bar', max < 40 || max - y < 260);
+  }
+  addEventListener('scroll', updateBars, {passive: true});
+  addEventListener('resize', updateBars);
+  addEventListener('hashchange', () => setTimeout(updateBars, 50));
+  document.querySelector('.burger').addEventListener('click', () => setTimeout(updateBars, 0));
+
   // Chuyển trang: các phần cùng data-group hiện chung một trang, địa chỉ dạng #phong, #bang-gia...
   // Link tới phần phụ (#lien-he, #so-do, #gio) mở trang chứa nó rồi cuộn tới phần đó.
   const pages = [...document.querySelectorAll('.page')];
@@ -1121,6 +1191,7 @@
   }
   addEventListener('hashchange', route);
   route();
+  updateBars();
 </script>
 </body>
 </html>
