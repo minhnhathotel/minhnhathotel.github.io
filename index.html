@@ -77,7 +77,53 @@
 
   /* Ô mục trang chủ */
   #muc{padding:50px 0 60px}
-  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .tile.wide{grid-column:span 2}
+  .tile .tag{top:16px;left:18px;right:auto}
+
+  /* Quà tặng */
+  .gift-intro{max-width:760px;margin:-20px auto 34px;text-align:center;color:var(--muted)}
+  .gifts{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .gift{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+  .gift:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(78,21,25,.12)}
+  .gift .thumb{aspect-ratio:4/3;cursor:zoom-in}
+  .gift .year{position:absolute;top:14px;left:14px;background:var(--maroon);color:var(--orange-2);font-weight:800;font-size:.8rem;padding:4px 12px;border-radius:999px}
+  .gift .body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+  .gift .date{color:var(--orange);font-weight:700;font-size:.85rem;margin-bottom:4px}
+  .gift h3{color:var(--maroon);font-size:1.12rem;margin-bottom:8px}
+  .gift p{color:var(--muted);font-size:.93rem;flex:1}
+  .gift .cond{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:.84rem;color:var(--ink);display:flex;gap:8px;align-items:flex-start}
+  .gift .cond .ico-sm{width:28px;height:28px}
+  .follow{margin-top:34px;background:linear-gradient(135deg,var(--maroon),#2c0b0e);color:#fff;border-radius:18px;padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;--ic-line:#f3e0c8}
+  .follow div{display:flex;align-items:center;gap:14px}
+  .follow b{color:var(--orange-2);font-size:1.1rem;display:block}
+  .follow small{color:#e9d9d3}
+
+  /* Ngày đặc biệt */
+  .sp-hero{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;margin-bottom:46px}
+  .sp-hero img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:20px;box-shadow:0 18px 40px rgba(78,21,25,.2)}
+  .sp-hero h2{font-size:clamp(1.8rem,4vw,2.5rem);color:var(--maroon);margin-bottom:14px}
+  .sp-hero p{color:var(--muted);margin-bottom:18px}
+  .occasions{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+  .occasions span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.88rem;font-weight:600;color:var(--maroon)}
+  .sp-notes{list-style:none;display:grid;gap:10px;margin-bottom:24px}
+  .sp-notes li{display:flex;gap:10px;align-items:flex-start;font-size:.95rem}
+  .sp-notes .ico-sm{width:32px;height:32px}
+  .sp-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .sp-actions .btn.ghost-dark{background:#fff}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:46px;counter-reset:st}
+  .step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;position:relative}
+  .step::before{counter-increment:st;content:counter(st);position:absolute;top:18px;right:20px;font-family:"Playfair Display",serif;font-size:2.4rem;font-weight:700;color:var(--line);line-height:1}
+  .step .ico{margin:0 0 10px;width:56px;height:56px}
+  .step h3{color:var(--maroon);font-size:1.05rem;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:.92rem}
+  .gallery.sp-gallery{grid-template-columns:repeat(4,1fr);grid-auto-rows:250px}
+  .sp-gallery .g-neon{grid-column:span 2;grid-row:span 2}
+  .sp-gallery .g-swan,.sp-gallery .g-wine{grid-row:span 2}
+  .sp-gallery .g-wine img{object-position:center 70%}
+  .includes{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:46px}
+  .includes div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;align-items:center;gap:12px;font-weight:600;color:var(--maroon);font-size:.93rem}
+  .includes .ico-sm{width:40px;height:40px}
   .tile{position:relative;height:250px;border-radius:18px;overflow:hidden;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;
     background:linear-gradient(to top,rgba(44,11,14,.92),rgba(44,11,14,.2) 75%),var(--img,none) center/cover,linear-gradient(135deg,var(--maroon-2),var(--maroon));transition:.25s}
   .tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(78,21,25,.25)}
@@ -89,6 +135,49 @@
   .tile.book{background:linear-gradient(135deg,var(--orange),#c4651a)}
   .tile.book small{color:#fff3e6}
   .tile.book .arrow{background:#fff;color:var(--orange)}
+
+  /* Icon */
+  .ico{width:64px;height:64px;display:block;margin:0 auto 10px}
+  .ico-sm{width:40px;height:40px;flex:none}
+  .ico-md{width:40px;height:40px;display:block}
+  .bi{width:18px;height:18px;flex:none}
+  .bi-lg{width:26px;height:26px}
+  #trang-gio,.tile{--ic-line:#f3e0c8}
+  .time h3{display:flex;align-items:center;gap:10px}
+  .call-float{color:#fff}
+
+  /* Tin tức */
+  .tile.news{background:linear-gradient(160deg,#fff 0%,#f3e7da 100%);color:var(--maroon);border:1px solid var(--line);--ic-line:#222}
+  .tile.news small{color:var(--muted)}
+  .tile.news .ico{position:absolute;top:22px;left:50%;transform:translateX(-50%);width:110px;height:110px;margin:0}
+  .sub{display:flex;align-items:center;gap:12px;font-size:1.35rem;color:var(--maroon);margin:44px 0 18px}
+  .sub .ico-sm{width:44px;height:44px}
+  .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .news-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+  .news-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(78,21,25,.12)}
+  .news-card .body,.place .body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+  .thumb{position:relative;aspect-ratio:16/10;background:linear-gradient(135deg,var(--maroon-2),var(--maroon));overflow:hidden}
+  .thumb img{width:100%;height:100%;object-fit:cover;transition:.4s}
+  .news-card:hover .thumb img,.place:hover .thumb img{transform:scale(1.05)}
+  .credit{position:absolute;right:0;bottom:0;max-width:100%;background:rgba(0,0,0,.55);color:#fff;font-size:.66rem;padding:3px 8px;border-top-left-radius:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .news-card .date{display:inline-block;align-self:flex-start;background:var(--cream);border:1px solid var(--line);color:var(--orange);font-weight:700;font-size:.78rem;padding:3px 10px;border-radius:999px;margin-bottom:10px}
+  .news-card h3{font-size:1.08rem;color:var(--maroon);margin-bottom:8px}
+  .news-card p{color:var(--muted);font-size:.92rem;flex:1}
+  .news-card .src{margin-top:14px;font-size:.82rem;color:var(--orange);font-weight:600}
+  .news-card .src:hover{text-decoration:underline}
+  .news-card.upcoming{background:linear-gradient(135deg,var(--maroon),#2c0b0e);color:#fff;border:0}
+  .news-card.upcoming h3{color:var(--orange-2)}
+  .news-card.upcoming p{color:#e9d9d3}
+  .places{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .place{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+  .place .thumb{aspect-ratio:4/3}
+  .place .body{padding:16px 18px 18px}
+  .place:hover{border-color:var(--orange);transform:translateY(-3px)}
+  .place .ico{width:56px;height:56px;margin:0 0 10px}
+  .place h3{font-size:1rem;color:var(--maroon);margin-bottom:4px}
+  .place p{color:var(--muted);font-size:.86rem;flex:1}
+  .place .map-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:.84rem;font-weight:600;color:var(--orange)}
+  .place .map-link .bi{width:15px;height:15px}
 
   /* Sections */
   section{padding:80px 0}
@@ -209,6 +298,15 @@
     .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px}
     .features{grid-template-columns:repeat(2,1fr)}
     .tiles{grid-template-columns:repeat(2,1fr)}
+    .gifts,.steps{grid-template-columns:repeat(2,1fr)}
+    .gallery.sp-gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:220px}
+    .sp-gallery .g-neon{grid-column:span 2;grid-row:span 1}
+    .sp-gallery .g-swan,.sp-gallery .g-wine{grid-row:span 1}
+    .includes{grid-template-columns:repeat(2,1fr)}
+    .sp-hero{grid-template-columns:1fr}
+    .sp-hero img{aspect-ratio:16/10}
+    .news-grid{grid-template-columns:1fr}
+    .places{grid-template-columns:repeat(2,1fr)}
     .rules{grid-template-columns:1fr}
     .menu{display:none;position:absolute;top:68px;left:0;right:0;background:var(--maroon);flex-direction:column;gap:0;padding:8px 16px 16px}
     .menu.open{display:flex}
@@ -220,6 +318,8 @@
     section{padding:60px 0}
     .features{grid-template-columns:1fr}
     .tiles{gap:10px}
+    .gifts,.steps{grid-template-columns:1fr}
+    .gallery.sp-gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px;gap:8px}
     .tile{height:150px;padding:14px}
     .tile b{font-size:1rem}
     .tile small{font-size:.78rem}
@@ -233,6 +333,147 @@
 </style>
 </head>
 <body>
+<!-- BỘ ICON: khối vàng đồng chuyển sắc + vòng tròn xám + viền vàng mảnh + nét đen mảnh -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gGold" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#b98a55"/><stop offset="1" stop-color="#f4e2cb"/></linearGradient>
+    <linearGradient id="gGray" x1="0" y1="0.5" x2="1" y2="0.5"><stop offset="0" stop-color="#8e8e94"/><stop offset="1" stop-color="#f1f1f1"/></linearGradient>
+    <mask id="mMoon"><rect width="64" height="64" fill="#fff"/><circle cx="40" cy="25" r="13" fill="#000"/></mask>
+  </defs>
+  <!-- giường -->
+  <symbol id="i-bed" viewBox="0 0 64 64">
+    <circle cx="45" cy="22" r="10" fill="url(#gGray)"/>
+    <rect x="10" y="33" width="40" height="13" rx="2" fill="url(#gGold)"/>
+    <rect x="10.6" y="19" width="10" height="27" fill="none" stroke="#c49663" stroke-width="1.2"/>
+    <path d="M24 29h16M13 46v5M47 46v5" stroke="var(--ic-line,#222)" stroke-width="1.3" fill="none"/>
+  </symbol>
+  <!-- đồng hồ -->
+  <symbol id="i-clock" viewBox="0 0 64 64">
+    <circle cx="27" cy="37" r="15" fill="url(#gGray)"/>
+    <circle cx="36" cy="29" r="16" fill="url(#gGold)" opacity=".85"/>
+    <circle cx="36" cy="29" r="16" fill="none" stroke="#c49663" stroke-width="1.2"/>
+    <path d="M36 29V18M36 29l8 5" stroke="var(--ic-line,#222)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+    <circle cx="36" cy="29" r="1.8" fill="var(--ic-line,#222)"/>
+  </symbol>
+  <!-- trái tim / trang trí -->
+  <symbol id="i-heart" viewBox="0 0 64 64">
+    <circle cx="46" cy="19" r="9" fill="url(#gGray)"/>
+    <path d="M30 52C13 40 10 27 19 22c6-3 11 1 11 5 0-4 5-8 11-5 9 5 6 18-11 30Z" fill="url(#gGold)"/>
+    <path d="M30 52C13 40 10 27 19 22c6-3 11 1 11 5 0-4 5-8 11-5" fill="none" stroke="#c49663" stroke-width="1.2" transform="translate(4 -3)"/>
+    <path d="M13 11v7M9.5 14.5h7M53 34l5-5" stroke="var(--ic-line,#222)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+  </symbol>
+  <!-- chuông lễ tân -->
+  <symbol id="i-bell" viewBox="0 0 64 64">
+    <circle cx="45" cy="20" r="9" fill="url(#gGray)"/>
+    <path d="M14 44a18 18 0 0 1 36 0Z" fill="url(#gGold)"/>
+    <rect x="10.6" y="44.6" width="42.8" height="5" fill="none" stroke="#c49663" stroke-width="1.2"/>
+    <path d="M32 26v-4M28 21.5h8M22 36c2-4 5-6 8-7" stroke="var(--ic-line,#222)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+  </symbol>
+  <!-- mặt trăng / nghỉ đêm -->
+  <symbol id="i-moon" viewBox="0 0 64 64">
+    <circle cx="42" cy="40" r="12" fill="url(#gGray)"/>
+    <circle cx="30" cy="31" r="17" fill="url(#gGold)" mask="url(#mMoon)"/>
+    <path d="M13 31a17 17 0 0 0 28 13" fill="none" stroke="#c49663" stroke-width="1.2" transform="translate(3 3)"/>
+    <path d="M48 10v6M45 13h6M54 22v4M52 24h4" stroke="var(--ic-line,#222)" stroke-width="1.3" stroke-linecap="round"/>
+  </symbol>
+  <!-- mặt trời / nghỉ ngày -->
+  <symbol id="i-sun" viewBox="0 0 64 64">
+    <circle cx="44" cy="22" r="10" fill="url(#gGray)"/>
+    <circle cx="29" cy="35" r="12" fill="url(#gGold)"/>
+    <circle cx="29" cy="35" r="16.5" fill="none" stroke="#c49663" stroke-width="1.2"/>
+    <path d="M29 12v4M29 54v4M6 35h4M48 35h4M13 19l3 3M42 48l3 3M13 51l3-3" stroke="var(--ic-line,#222)" stroke-width="1.3" stroke-linecap="round"/>
+  </symbol>
+  <!-- ghim bản đồ -->
+  <symbol id="i-pin" viewBox="0 0 64 64">
+    <path d="M30 53C21 42 17 34 17 26a13 13 0 0 1 26 0c0 8-4 16-13 27Z" fill="url(#gGold)"/>
+    <path d="M34 50C25 39 21 31 21 23a13 13 0 0 1 26 0c0 8-4 16-13 27Z" fill="none" stroke="#c49663" stroke-width="1.2"/>
+    <circle cx="33" cy="24" r="7" fill="url(#gGray)"/>
+    <path d="M18 57h26" stroke="var(--ic-line,#222)" stroke-width="1.3" stroke-linecap="round"/>
+  </symbol>
+  <!-- điện thoại -->
+  <symbol id="i-phone" viewBox="0 0 64 64">
+    <circle cx="46" cy="19" r="9" fill="url(#gGray)"/>
+    <rect x="17" y="12" width="22" height="40" rx="4" fill="url(#gGold)"/>
+    <rect x="21.6" y="16.6" width="22" height="40" rx="4" fill="none" stroke="#c49663" stroke-width="1.2"/>
+    <path d="M24 18h8M50 12c3 3 3 9 0 12" stroke="var(--ic-line,#222)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <circle cx="28" cy="46" r="2" fill="var(--ic-line,#222)"/>
+  </symbol>
+  <!-- tin nhắn -->
+  <symbol id="i-chat" viewBox="0 0 64 64">
+    <rect x="30.6" y="12.6" width="20" height="26" fill="none" stroke="#c49663" stroke-width="1.2"/>
+    <path d="M38 22h7v14h-7Z" fill="url(#gGold)"/>
+    <path d="M26 20a15 15 0 1 1-5 29l-6 4 2-8a15 15 0 0 1 9-25Z" fill="url(#gGray)"/>
+    <path d="M30 40h18M33 44h15M36 48h12" stroke="var(--ic-line,#222)" stroke-width="1.3" stroke-linecap="round"/>
+  </symbol>
+  <!-- lịch / sự kiện -->
+  <symbol id="i-calendar" viewBox="0 0 64 64">
+    <circle cx="46" cy="20" r="9" fill="url(#gGray)"/>
+    <rect x="12" y="22" width="34" height="28" fill="url(#gGold)"/>
+    <rect x="12.6" y="16.6" width="34" height="9" fill="none" stroke="#c49663" stroke-width="1.2"/>
+    <path d="M20 12v8M38 12v8M19 33h6M29 33h6M19 41h6" stroke="var(--ic-line,#222)" stroke-width="1.3" stroke-linecap="round"/>
+  </symbol>
+  <!-- đình chùa -->
+  <symbol id="i-temple" viewBox="0 0 64 64">
+    <circle cx="46" cy="18" r="9" fill="url(#gGray)"/>
+    <path d="M8 30c8 0 14-4 24-12 10 8 16 12 24 12Z" fill="url(#gGold)"/>
+    <rect x="16.6" y="30.6" width="30" height="20" fill="none" stroke="#c49663" stroke-width="1.2"/>
+    <path d="M14 43h36" stroke="#c49663" stroke-width="1.2"/>
+    <path d="M28 51V40h8v11M10 54h44" stroke="var(--ic-line,#222)" stroke-width="1.3" fill="none"/>
+  </symbol>
+  <!-- thành cổ -->
+  <symbol id="i-castle" viewBox="0 0 64 64">
+    <circle cx="20" cy="18" r="9" fill="url(#gGray)"/>
+    <path d="M12 52V28h6v4h6v-4h6v4h6v-4h6v4h6v-4h6v24Z" fill="url(#gGold)"/>
+    <path d="M24 52V42a6 6 0 0 1 12 0v10" fill="none" stroke="#fff" stroke-width="1.4"/>
+    <rect x="16.6" y="24.6" width="40" height="30" fill="none" stroke="#c49663" stroke-width="1.2"/>
+    <path d="M8 55h50" stroke="var(--ic-line,#222)" stroke-width="1.3"/>
+  </symbol>
+  <!-- tranh Đông Hồ -->
+  <symbol id="i-paint" viewBox="0 0 64 64">
+    <circle cx="22" cy="40" r="10" fill="url(#gGray)"/>
+    <rect x="16" y="14" width="30" height="34" fill="url(#gGold)"/>
+    <rect x="20.6" y="18.6" width="30" height="34" fill="none" stroke="#c49663" stroke-width="1.2"/>
+    <path d="M44 10 56 2M26 30c4-6 8-6 12 0" stroke="var(--ic-line,#222)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+  </symbol>
+  <!-- gốm -->
+  <symbol id="i-pot" viewBox="0 0 64 64">
+    <circle cx="46" cy="22" r="9" fill="url(#gGray)"/>
+    <path d="M24 14h14v4c8 5 11 12 9 20-2 9-9 14-16 14s-14-5-16-14c-2-8 1-15 9-20Z" fill="url(#gGold)"/>
+    <path d="M28 18h14v4c8 5 11 12 9 20" fill="none" stroke="#c49663" stroke-width="1.2"/>
+    <path d="M18 34h26M22 14h18" stroke="var(--ic-line,#222)" stroke-width="1.3" stroke-linecap="round"/>
+  </symbol>
+  <!-- âm nhạc / quan họ -->
+  <symbol id="i-music" viewBox="0 0 64 64">
+    <circle cx="24" cy="44" r="11" fill="url(#gGray)"/>
+    <path d="M32 14l20-4v8l-20 4Z" fill="url(#gGold)"/>
+    <rect x="40.6" y="34.6" width="12" height="12" fill="none" stroke="#c49663" stroke-width="1.2" transform="rotate(10 46 40)"/>
+    <path d="M32 14v30M52 10v26" stroke="var(--ic-line,#222)" stroke-width="1.3"/>
+    <circle cx="28" cy="44" r="4" fill="var(--ic-line,#222)"/><circle cx="48" cy="36" r="4" fill="var(--ic-line,#222)"/>
+  </symbol>
+  <!-- mua sắm / vui chơi -->
+  <symbol id="i-shop" viewBox="0 0 64 64">
+    <circle cx="46" cy="20" r="11" fill="url(#gGray)"/>
+    <path d="M12 26h40l-4 18H16Z" fill="url(#gGold)" opacity=".75"/>
+    <path d="M16.6 30h38l-4 18H20Z" fill="none" stroke="#c49663" stroke-width="1.2"/>
+    <circle cx="20" cy="54" r="3.5" fill="url(#gGold)"/><circle cx="44" cy="54" r="3.5" fill="url(#gGold)"/>
+    <path d="M6 20h6l4 6M40 30l12-10" stroke="var(--ic-line,#222)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+  </symbol>
+  <!-- tin tức -->
+  <symbol id="i-news" viewBox="0 0 64 64">
+    <rect x="12" y="14" width="22" height="18" fill="url(#gGold)"/>
+    <path d="M14 28c4-8 8-8 12-2s6 4 8 0" fill="none" stroke="#c49663" stroke-width="1.2"/>
+    <rect x="37" y="14" width="16" height="36" fill="url(#gGray)"/>
+    <rect x="12" y="37" width="22" height="5" rx="2.5" fill="url(#gGold)"/>
+    <rect x="12" y="45" width="22" height="5" rx="2.5" fill="url(#gGray)"/>
+    <circle cx="30" cy="47.5" r="3" fill="#fff" stroke="var(--ic-line,#222)" stroke-width="1.2"/>
+    <path d="M40 20h9M40 24h7M40 28h9" stroke="var(--ic-line,#222)" stroke-width="1.2"/>
+  </symbol>
+  <!-- icon nét cho nút (màu theo chữ) -->
+  <symbol id="b-chat" viewBox="0 0 24 24"><path d="M12 3c5 0 9 3.6 9 8s-4 8-9 8c-1 0-2-.1-3-.4L4 21l1.3-4A7.7 7.7 0 0 1 3 11c0-4.4 4-8 9-8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 11h.01M12 11h.01M16 11h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="b-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="b-map" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+</svg>
+
 
 <header>
   <div class="container nav">
@@ -240,12 +481,13 @@
     <nav class="menu" id="menu">
       <a href="#">Trang chủ</a>
       <a href="#phong">Phòng</a>
-      <a href="#hinh-anh">Hình ảnh</a>
       <a href="#bang-gia">Bảng giá</a>
-      <a href="#gio">Giờ nhận/trả</a>
+      <a href="#dac-biet">Ngày đặc biệt</a>
+      <a href="#qua-tang">Quà tặng</a>
+      <a href="#tin-tuc">Tin tức</a>
       <a href="#lien-he">Liên hệ</a>
     </nav>
-    <a href="tel:02222225678" class="btn">📞 0222 222 5678</a>
+    <a href="tel:02222225678" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-phone"/></svg>0222 222 5678</a>
     <button class="burger" aria-label="Mở menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
   </div>
 </header>
@@ -260,7 +502,7 @@
       <h1 class="brand">MINH NHẬT<small>LUXURY HOTEL</small></h1>
       <p>Không gian sang trọng, phòng được trang trí tinh tế, phục vụ tận tâm. Thuê theo giờ, nghỉ đêm hoặc nghỉ ngày, giá rõ ràng.</p>
       <div class="hero-actions">
-        <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn">💬 Đặt phòng ngay</a>
+        <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-chat"/></svg>Đặt phòng ngay</a>
         <a href="#bang-gia" class="btn ghost">Xem bảng giá</a>
       </div>
     </div>
@@ -279,10 +521,13 @@
 <section id="muc">
   <div class="container">
     <div class="tiles">
-      <a href="#gioi-thieu" class="tile" style="--img:url('images/toa-nha.jpg');background-position:center,center 65%,center"><span class="arrow">→</span><b>Giới thiệu &amp; Liên hệ</b><small>Địa chỉ, bản đồ, hotline</small></a>
       <a href="#phong" class="tile" style="--img:url('images/vip-4.jpg')"><span class="arrow">→</span><b>Các loại phòng</b><small>VIP · Đôi · Thường · Sơ đồ phòng</small></a>
-      <a href="#hinh-anh" class="tile" style="--img:url('images/vip-2.jpg')"><span class="arrow">→</span><b>Hình ảnh</b><small>Không gian các phòng</small></a>
       <a href="#bang-gia" class="tile" style="--img:url('images/vip-5.jpg')"><span class="arrow">→</span><b>Bảng giá &amp; Giờ nhận/trả</b><small>Nghỉ đêm 20:00 – 10:00</small></a>
+      <a href="#hinh-anh" class="tile" style="--img:url('images/vip-2.jpg')"><span class="arrow">→</span><b>Hình ảnh</b><small>Không gian các phòng</small></a>
+      <a href="#gioi-thieu" class="tile" style="--img:url('images/toa-nha.jpg');background-position:center,center 65%,center"><span class="arrow">→</span><b>Giới thiệu &amp; Liên hệ</b><small>Địa chỉ, bản đồ, hotline</small></a>
+      <a href="#dac-biet" class="tile wide" style="--img:url('images/dac-biet/sinh-nhat-den-long.jpg');background-position:center,center 55%,center"><span class="tag">Mới</span><span class="arrow">→</span><b>Đặt phòng ngày đặc biệt</b><small>Trang trí sinh nhật, kỷ niệm, Valentine theo yêu cầu</small></a>
+      <a href="#qua-tang" class="tile" style="--img:url('images/qua-tang/qua-14-2-2026.jpg')"><span class="arrow">→</span><b>Quà tặng</b><small>Quà cho khách vào các dịp lễ</small></a>
+      <a href="#tin-tuc" class="tile news"><svg class="ico" aria-hidden="true"><use href="#i-news"/></svg><span class="arrow">→</span><b>Tin tức &amp; Khám phá</b><small>Sự kiện, điểm đến Bắc Ninh</small></a>
     </div>
   </div>
 </section>
@@ -298,10 +543,10 @@
       <p>Khách sạn nằm tại 57 Nguyễn Đình Chiểu, phường Võ Cường, Bắc Ninh, với 25 phòng gồm phòng VIP, phòng đôi và phòng thường.</p>
     </div>
     <div class="features">
-      <div class="feature"><div class="ic">🛏️</div><h3>Phòng sang trọng</h3><p>Nội thất đẹp, chăn ga sạch sẽ, trang trí tinh tế.</p></div>
-      <div class="feature"><div class="ic">⏱️</div><h3>Linh hoạt thời gian</h3><p>Thuê theo giờ, nghỉ đêm hoặc nghỉ ngày.</p></div>
-      <div class="feature"><div class="ic">💝</div><h3>Trang trí theo yêu cầu</h3><p>Sinh nhật, kỷ niệm, dịp đặc biệt.</p></div>
-      <div class="feature"><div class="ic">🤝</div><h3>Phục vụ tận tâm</h3><p>Đội ngũ lễ tân chuyên nghiệp, thân thiện.</p></div>
+      <div class="feature"><svg class="ico" aria-hidden="true"><use href="#i-bed"/></svg><h3>Phòng sang trọng</h3><p>Nội thất đẹp, chăn ga sạch sẽ, trang trí tinh tế.</p></div>
+      <div class="feature"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><h3>Linh hoạt thời gian</h3><p>Thuê theo giờ, nghỉ đêm hoặc nghỉ ngày.</p></div>
+      <div class="feature"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg><h3>Trang trí theo yêu cầu</h3><p>Sinh nhật, kỷ niệm, dịp đặc biệt.</p></div>
+      <div class="feature"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg><h3>Phục vụ tận tâm</h3><p>Đội ngũ lễ tân chuyên nghiệp, thân thiện.</p></div>
     </div>
   </div>
 </section>
@@ -326,7 +571,7 @@
             <li>Nghỉ ngày <small>(12h – 10h)</small><b>730.000đ</b></li>
           </ul>
           <p class="nums">8 phòng: <b>301, 302, 401, 402, 501, 502, 601, 602</b></p>
-          <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn">💬 Đặt phòng VIP</a>
+          <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-chat"/></svg>Đặt phòng VIP</a>
         </div>
       </article>
       <article class="room">
@@ -340,7 +585,7 @@
             <li>Nghỉ ngày <small>(12h – 10h)</small><b>730.000đ</b></li>
           </ul>
           <p class="nums">2 phòng: <b>201, 202</b></p>
-          <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn">💬 Đặt phòng Đôi</a>
+          <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-chat"/></svg>Đặt phòng Đôi</a>
         </div>
       </article>
       <article class="room">
@@ -354,7 +599,7 @@
             <li>Nghỉ ngày <small>(12h – 10h)</small><b>580.000đ</b></li>
           </ul>
           <p class="nums">Các phòng <b>x04, x05</b> (204 → 605). Các phòng <b>x03</b> (203 → 603) có cửa sổ hướng hành lang.</p>
-          <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn">💬 Đặt phòng Thường</a>
+          <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-chat"/></svg>Đặt phòng Thường</a>
         </div>
       </article>
     </div>
@@ -421,19 +666,19 @@
     </div>
     <div class="times">
       <div class="time">
-        <h3>⏱️ Thuê theo giờ</h3>
+        <h3><svg class="ico-sm" aria-hidden="true"><use href="#i-clock"/></svg>Thuê theo giờ</h3>
         <div class="row"><span>Nhận khách đến</span><span class="big">22:00</span></div>
         <div class="row"><span>Tính giá</span><span>Giờ đầu + giờ tiếp theo</span></div>
         <p>Tính từ thời điểm nhận phòng. Sau 22:00 không nhận nghỉ giờ, tự động tính là nghỉ đêm.</p>
       </div>
       <div class="time">
-        <h3>🌙 Nghỉ đêm</h3>
+        <h3><svg class="ico-sm" aria-hidden="true"><use href="#i-moon"/></svg>Nghỉ đêm</h3>
         <div class="row"><span>Nhận phòng</span><span class="big">20:00</span></div>
         <div class="row"><span>Trả phòng</span><span class="big">10:00</span></div>
         <p>Nhận phòng từ 20:00, trả phòng trước 10:00 sáng hôm sau.</p>
       </div>
       <div class="time">
-        <h3>☀️ Nghỉ ngày</h3>
+        <h3><svg class="ico-sm" aria-hidden="true"><use href="#i-sun"/></svg>Nghỉ ngày</h3>
         <div class="row"><span>Nhận phòng</span><span class="big">12:00</span></div>
         <div class="row"><span>Trả phòng</span><span class="big">10:00</span></div>
         <p>Nhận phòng từ 12:00 trưa, trả phòng trước 10:00 sáng hôm sau.</p>
@@ -465,6 +710,212 @@
   </div>
 </section>
 
+<!-- ĐẶT PHÒNG NGÀY ĐẶC BIỆT -->
+<section id="trang-dac-biet" class="page" data-group="dac-biet" hidden>
+  <div class="container">
+    <a href="#" class="back">← Trang chủ</a>
+    <div class="sp-hero">
+      <div>
+        <span class="eyebrow" style="color:var(--orange)">Đặt phòng ngày đặc biệt</span>
+        <h2 class="serif">Trang trí phòng theo ý bạn</h2>
+        <p>Minh Nhật Luxury Hotel nhận trang trí phòng cho những dịp quan trọng. Quý khách chỉ cần nhắn ý tưởng, khách sạn sẽ chuẩn bị phòng sẵn sàng trước giờ nhận phòng.</p>
+        <div class="occasions"><span>Sinh nhật</span><span>Kỷ niệm ngày yêu</span><span>Kỷ niệm ngày cưới</span><span>Cầu hôn</span><span>Valentine 14/2</span><span>8/3 &amp; 20/10</span><span>Giáng sinh</span></div>
+        <ul class="sp-notes">
+          <li><svg class="ico-sm" aria-hidden="true"><use href="#i-chat"/></svg><span><b>Không có gói cố định.</b> Khách sạn tư vấn và báo giá theo yêu cầu của từng quý khách.</span></li>
+          <li><svg class="ico-sm" aria-hidden="true"><use href="#i-heart"/></svg><span><b>Được mang bánh, hoa, quà riêng.</b> Khách sạn hỗ trợ sắp xếp, bày trí giúp quý khách.</span></li>
+        </ul>
+        <div class="sp-actions">
+          <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-chat"/></svg>Nhắn tin để báo giá</a>
+          <a href="tel:02222225678" class="btn ghost-dark"><svg class="bi" aria-hidden="true"><use href="#b-phone"/></svg>0222 222 5678</a>
+        </div>
+      </div>
+      <img src="images/dac-biet/sinh-nhat-den-long.jpg" alt="Phòng VIP trang trí sinh nhật với bóng bay và đèn lồng đỏ">
+    </div>
+
+    <h3 class="sub"><svg class="ico-sm" aria-hidden="true"><use href="#i-calendar"/></svg>Đặt trong 3 bước</h3>
+    <div class="steps">
+      <div class="step"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg><h3>Nhắn tin cho khách sạn</h3><p>Cho biết ngày, giờ nhận phòng, dịp kỷ niệm và ý tưởng trang trí mong muốn.</p></div>
+      <div class="step"><svg class="ico" aria-hidden="true"><use href="#i-bed"/></svg><h3>Chọn phòng &amp; nhận báo giá</h3><p>Khách sạn gợi ý phòng phù hợp, gửi báo giá trang trí. Quý khách xác nhận để giữ phòng.</p></div>
+      <div class="step"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg><h3>Nhận phòng đã trang trí</h3><p>Phòng được chuẩn bị sẵn trước giờ hẹn. Quý khách chỉ việc đến và tận hưởng.</p></div>
+    </div>
+
+    <h3 class="sub"><svg class="ico-sm" aria-hidden="true"><use href="#i-bell"/></svg>Có thể trang trí</h3>
+    <div class="includes">
+      <div><svg class="ico-sm" aria-hidden="true"><use href="#i-heart"/></svg>Hoa hồng, cánh hoa</div>
+      <div><svg class="ico-sm" aria-hidden="true"><use href="#i-bed"/></svg>Thiên nga khăn</div>
+      <div><svg class="ico-sm" aria-hidden="true"><use href="#i-sun"/></svg>Bóng bay, chữ trang trí</div>
+      <div><svg class="ico-sm" aria-hidden="true"><use href="#i-moon"/></svg>Nến, đèn led</div>
+      <div><svg class="ico-sm" aria-hidden="true"><use href="#i-calendar"/></svg>Bánh kem theo yêu cầu</div>
+      <div><svg class="ico-sm" aria-hidden="true"><use href="#i-shop"/></svg>Rượu vang, tháp bánh</div>
+      <div><svg class="ico-sm" aria-hidden="true"><use href="#i-music"/></svg>Chủ đề riêng theo phòng</div>
+      <div><svg class="ico-sm" aria-hidden="true"><use href="#i-bell"/></svg>Bày trí quà khách mang đến</div>
+    </div>
+
+    <h3 class="sub"><svg class="ico-sm" aria-hidden="true"><use href="#i-paint"/></svg>Phòng khách sạn đã trang trí</h3>
+    <!-- Hàng trên: không gian phòng (tông hồng/tím). Hàng dưới: bánh & tiệc (tông trắng/ấm). -->
+    <div class="gallery sp-gallery">
+      <figure class="g-neon"><img src="images/dac-biet/sinh-nhat-neon.jpg" alt="Phòng trang trí sinh nhật với bóng bay và đèn neon"><figcaption><small>Sinh nhật</small>Bóng bay, đèn neon, bánh hoa hồng</figcaption></figure>
+      <figure class="g-swan"><img src="images/dac-biet/giuong-thien-nga.jpg" alt="Giường tròn xếp thiên nga khăn và cánh hoa hồng"><figcaption><small>Lãng mạn</small>Thiên nga &amp; cánh hoa hồng</figcaption></figure>
+      <figure class="g-wine"><img src="images/dac-biet/banh-ruou.jpg" alt="Bánh I love you, rượu vang và nến"><figcaption><small>Kỷ niệm</small>Bánh “I ♥ U” &amp; rượu vang</figcaption></figure>
+      <figure><img src="images/dac-biet/banh-love.jpg" alt="Bánh kem trái tim Love chúc mừng sinh nhật"><figcaption><small>Sinh nhật</small>Bánh kem “Love”</figcaption></figure>
+      <figure><img src="images/dac-biet/banh-tim.jpg" alt="Bánh sinh nhật trái tim đỏ Happy Birthday"><figcaption><small>Sinh nhật</small>Bánh trái tim đỏ</figcaption></figure>
+      <figure><img src="images/dac-biet/thap-banh-2.jpg" alt="Tháp bánh ngọt, rượu vang và nến"><figcaption><small>Tiệc nhỏ</small>Tháp bánh &amp; rượu vang</figcaption></figure>
+      <figure><img src="images/dac-biet/thap-banh-1.jpg" alt="Tháp bánh ngọt và rượu sâm panh"><figcaption><small>Tiệc nhỏ</small>Tháp bánh &amp; sâm panh</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- QUÀ TẶNG
+     Cách thêm dịp mới: chép một khối <article class="gift">, đổi ảnh (images/qua-tang/), ngày, tên dịp, nội dung. Đặt dịp mới nhất lên đầu. -->
+<section id="trang-qua-tang" class="page" data-group="qua-tang" hidden>
+  <div class="container">
+    <a href="#" class="back">← Trang chủ</a>
+    <div class="head">
+      <span class="eyebrow">Quà tặng</span>
+      <h2 class="serif">Quà tặng ngày lễ</h2>
+    </div>
+    <p class="gift-intro">Vào mỗi dịp lễ đặc biệt, Minh Nhật Luxury Hotel đều chuẩn bị những phần quà nhỏ để gửi tới quý khách lưu trú tại khách sạn. Quà được tặng <b>duy nhất trong ngày lễ</b>, <b>mỗi phòng 1 phần quà</b>.</p>
+    <div class="gifts">
+      <article class="gift">
+        <div class="thumb"><img src="images/qua-tang/qua-8-3-2026.jpg" alt="Hộp dâu tây thắt nơ hồng tặng khách ngày 8/3/2026" loading="lazy"><span class="year">2026</span></div>
+        <div class="body">
+          <span class="date">08/03/2026</span>
+          <h3>Ngày Quốc tế Phụ nữ</h3>
+          <p>Hộp dâu tây tươi thắt nơ hồng gửi tặng quý khách.</p>
+          <div class="cond"><svg class="ico-sm" aria-hidden="true"><use href="#i-calendar"/></svg><span>Áp dụng duy nhất ngày 8/3/2026 · Mỗi phòng 1 phần quà</span></div>
+        </div>
+      </article>
+      <article class="gift">
+        <div class="thumb"><img src="images/qua-tang/qua-14-2-2026.jpg" alt="Hộp quà trái tim quýt, dâu tây và hoa baby ngày Valentine 2026" loading="lazy"><span class="year">2026</span></div>
+        <div class="body">
+          <span class="date">14/02/2026</span>
+          <h3>Lễ Tình nhân (Valentine)</h3>
+          <p>Hộp quà trái tim với quýt, dâu tây tươi và hoa baby trắng dành cho các cặp đôi.</p>
+          <div class="cond"><svg class="ico-sm" aria-hidden="true"><use href="#i-calendar"/></svg><span>Áp dụng duy nhất ngày 14/2/2026 · Mỗi phòng 1 phần quà</span></div>
+        </div>
+      </article>
+      <article class="gift">
+        <div class="thumb"><img src="images/qua-tang/qua-noel-2025.jpg" alt="Hộp trái cây Giáng sinh thắt nơ đỏ xanh, Noel 2025" loading="lazy"><span class="year">2025</span></div>
+        <div class="body">
+          <span class="date">25/12/2025</span>
+          <h3>Lễ Giáng sinh (Noel)</h3>
+          <p>Hộp trái cây Giáng sinh gồm táo, quýt thắt nơ đỏ – xanh gửi tặng quý khách.</p>
+          <div class="cond"><svg class="ico-sm" aria-hidden="true"><use href="#i-calendar"/></svg><span>Áp dụng duy nhất ngày 25/12/2025 · Mỗi phòng 1 phần quà</span></div>
+        </div>
+      </article>
+      <article class="gift">
+        <div class="thumb"><img src="images/qua-tang/qua-20-10-2025.jpg" alt="Hộp trái cây xanh thắt nơ voan hồng ngày 20/10/2025" loading="lazy"><span class="year">2025</span></div>
+        <div class="body">
+          <span class="date">20/10/2025</span>
+          <h3>Ngày Phụ nữ Việt Nam</h3>
+          <p>Hộp trái cây xanh tươi thắt nơ voan hồng gửi tặng quý khách.</p>
+          <div class="cond"><svg class="ico-sm" aria-hidden="true"><use href="#i-calendar"/></svg><span>Áp dụng duy nhất ngày 20/10/2025 · Mỗi phòng 1 phần quà</span></div>
+        </div>
+      </article>
+      <article class="gift">
+        <div class="thumb"><img src="images/qua-tang/qua-8-3-2025.jpg" alt="Khay trái cây nho, quýt, táo tặng khách ngày 8/3/2025" loading="lazy"><span class="year">2025</span></div>
+        <div class="body">
+          <span class="date">08/03/2025</span>
+          <h3>Ngày Quốc tế Phụ nữ</h3>
+          <p>Khay trái cây tươi gồm nho đỏ, quýt và táo xanh gửi tặng quý khách.</p>
+          <div class="cond"><svg class="ico-sm" aria-hidden="true"><use href="#i-calendar"/></svg><span>Áp dụng duy nhất ngày 8/3/2025 · Mỗi phòng 1 phần quà</span></div>
+        </div>
+      </article>
+    </div>
+    <div class="follow">
+      <div><svg class="ico-sm" aria-hidden="true" style="width:48px;height:48px"><use href="#i-heart"/></svg><span><b>Đón chờ quà tặng dịp lễ tiếp theo</b><small>Theo dõi trang Facebook của khách sạn để không bỏ lỡ.</small></span></div>
+      <a href="https://www.facebook.com/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn">Theo dõi Facebook</a>
+    </div>
+  </div>
+</section>
+
+<!-- TIN TỨC & KHÁM PHÁ BẮC NINH
+     Cách cập nhật: sửa/thêm các khối <article class="news-card"> bên dưới.
+     Ảnh đặt trong thư mục images/tin-tuc/. Luôn ghi nguồn ảnh ở dòng "credit". -->
+<section id="trang-tin-tuc" class="page" data-group="tin-tuc" hidden>
+  <div class="container">
+    <a href="#" class="back">← Trang chủ</a>
+    <div class="head">
+      <span class="eyebrow">Tin tức</span>
+      <h2 class="serif">Khám phá Bắc Ninh</h2>
+      <p>Sự kiện nổi bật, lễ hội và những điểm đến gần khách sạn</p>
+    </div>
+
+    <h3 class="sub"><svg class="ico-sm" aria-hidden="true"><use href="#i-calendar"/></svg>Sự kiện nổi bật</h3>
+    <div class="news-grid">
+      <article class="news-card">
+        <div class="thumb"><img src="images/tin-tuc/tin-thanh-pho.jpg" alt="Chương trình nghệ thuật chào mừng thành lập thành phố Bắc Ninh" loading="lazy"><span class="credit">Ảnh: Báo Quốc tế</span></div>
+        <div class="body">
+          <span class="date">19/09/2026</span>
+          <h3>Công bố thành lập thành phố Bắc Ninh</h3>
+          <p>Lễ công bố Nghị quyết số 39/2026/QH16 của Quốc hội về việc thành lập thành phố Bắc Ninh. Buổi tối có chương trình nghệ thuật “Mạch nguồn Kinh Bắc – Vươn cao thời đại” và bắn pháo hoa tại Quảng trường 3/2.</p>
+          <a class="src" href="https://baoquocte.vn/sap-dien-ra-le-cong-bo-nghi-quyet-so-39-2026-qh16-cua-quoc-hoi-ve-viec-thanh-lap-thanh-pho-bac-ninh-443041.html" target="_blank" rel="noopener">Đọc tiếp tại Báo Quốc tế →</a>
+        </div>
+      </article>
+      <article class="news-card">
+        <div class="thumb"><img src="images/tin-tuc/tin-festival.jpg" alt="Du khách xem tranh Đông Hồ tại Festival Về miền di sản 2026" loading="lazy"><span class="credit">Ảnh: Văn hóa &amp; Phát triển</span></div>
+        <div class="body">
+          <span class="date">27 – 31/03/2026</span>
+          <h3>Festival “Về miền di sản 2026”</h3>
+          <p>Đón nhận Bằng UNESCO ghi danh Nghề làm tranh dân gian Đông Hồ và công bố Quần thể Yên Tử – Vĩnh Nghiêm – Côn Sơn – Kiếp Bạc là Di sản văn hóa thế giới. Có đêm nghệ thuật, trình diễn drone, pháo hoa và chợ tranh Đông Hồ.</p>
+          <a class="src" href="https://vanhoavaphattrien.vn/bac-ninh-to-chuc-le-don-nhan-bang-unesco-va-khai-mac-festival-ve-mien-di-san-2026-a32241.html" target="_blank" rel="noopener">Đọc tiếp tại Văn hóa &amp; Phát triển →</a>
+        </div>
+      </article>
+      <article class="news-card">
+        <div class="thumb"><img src="images/tin-tuc/tin-yen-the.webp" alt="Sân khấu khai mạc Tuần lễ hội Yên Thế 2026" loading="lazy"><span class="credit">Ảnh: Báo Nhân Dân</span></div>
+        <div class="body">
+          <span class="date">10 – 18/03/2026</span>
+          <h3>Tuần lễ hội Yên Thế 2026</h3>
+          <p>Tại Khu di tích Hoàng Hoa Thám, xã Yên Thế. Lễ dâng hương tưởng niệm, ca kịch “Hùm thiêng Yên Thế”, hát quan họ trên thuyền, chèo, rối nước và nhiều giải thể thao.</p>
+          <a class="src" href="https://nhandan.vn/bac-ninh-khai-mac-tuan-le-hoi-yen-the-nam-2026-post947786.html" target="_blank" rel="noopener">Đọc tiếp tại Báo Nhân Dân →</a>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="sub"><svg class="ico-sm" aria-hidden="true"><use href="#i-music"/></svg>Lễ hội sắp tới</h3>
+    <div class="news-grid">
+      <article class="news-card upcoming">
+        <div class="thumb"><img src="images/tin-tuc/hoi-lim.jpg" alt="Cổng hội Lim, Bắc Ninh" loading="lazy"><span class="credit">Ảnh: Nguyễn Đông Sơn / Wikimedia, CC BY-SA 3.0</span></div>
+        <div class="body">
+          <span class="date">13 tháng Giêng âm lịch</span>
+          <h3>Hội Lim</h3>
+          <p>Lễ hội lớn nhất vùng Kinh Bắc, nổi tiếng với hát Quan họ trên thuyền, trên đồi Lim và các trò chơi dân gian. Nên đặt phòng sớm vì dịp này khách đông.</p>
+        </div>
+      </article>
+      <article class="news-card upcoming">
+        <div class="thumb"><img src="images/tin-tuc/chua-dau.jpg" alt="Chùa Dâu, Bắc Ninh" loading="lazy"><span class="credit">Ảnh: Bùi Thế Tâm / Wikimedia, CC BY-SA 3.0</span></div>
+        <div class="body">
+          <span class="date">Tháng Giêng – tháng Ba âm lịch</span>
+          <h3>Mùa lễ hội xuân Kinh Bắc</h3>
+          <p>Hội chùa Dâu, hội đền Đô, hội chùa Phật Tích… Thời điểm đẹp nhất để du xuân, viếng chùa và nghe Quan họ ở Bắc Ninh.</p>
+        </div>
+      </article>
+      <article class="news-card upcoming">
+        <div class="thumb"><img src="images/vip-3.jpg" alt="Phòng VIP Minh Nhật Luxury Hotel" loading="lazy"></div>
+        <div class="body">
+          <span class="date">Quanh năm</span>
+          <h3>Ở lại Minh Nhật Luxury Hotel</h3>
+          <p>Phòng VIP theo chủ đề, nghỉ đêm từ 430.000đ. Nhắn tin để được tư vấn lịch trình tham quan và đặt phòng.</p>
+          <a class="src" href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" style="color:var(--orange-2)">Nhắn tin đặt phòng →</a>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="sub"><svg class="ico-sm" aria-hidden="true"><use href="#i-pin"/></svg>Điểm tham quan &amp; vui chơi</h3>
+    <div class="places">
+      <div class="place"><div class="thumb"><img src="images/tin-tuc/thanh-co.jpg" alt="Thành cổ Bắc Ninh, ảnh tư liệu" loading="lazy"><span class="credit">Ảnh tư liệu: Hocquard / Wikimedia, phạm vi công cộng</span></div><div class="body"><h3>Thành cổ &amp; Văn Miếu Bắc Ninh</h3><p>Di tích lịch sử, kiến trúc tiêu biểu của vùng Kinh Bắc.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Th%C3%A0nh%20c%E1%BB%95%20B%E1%BA%AFc%20Ninh"><svg class="bi"><use href="#b-map"/></svg>Xem bản đồ</a></div></div>
+      <div class="place"><div class="thumb"><img src="images/tin-tuc/den-do.jpg" alt="Đền Đô, Bắc Ninh" loading="lazy"><span class="credit">Ảnh: Cuong PM / Wikimedia, CC BY 2.0</span></div><div class="body"><h3>Đền Đô</h3><p>Nơi thờ 8 vị vua nhà Lý, quần thể kiến trúc đẹp và linh thiêng.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%C4%90%E1%BB%81n%20%C4%90%C3%B4%20B%E1%BA%AFc%20Ninh"><svg class="bi"><use href="#b-map"/></svg>Xem bản đồ</a></div></div>
+      <div class="place"><div class="thumb"><img src="images/tin-tuc/phat-tich.jpg" alt="Tượng A Di Đà, chùa Phật Tích" loading="lazy"><span class="credit">Ảnh: Bongbech / Wikimedia, CC BY-SA 4.0</span></div><div class="body"><h3>Chùa Phật Tích</h3><p>Ngôi chùa cổ thời Lý trên núi Phật Tích, có tượng A Di Đà bằng đá nổi tiếng.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ch%C3%B9a%20Ph%E1%BA%ADt%20T%C3%ADch%20B%E1%BA%AFc%20Ninh"><svg class="bi"><use href="#b-map"/></svg>Xem bản đồ</a></div></div>
+      <div class="place"><div class="thumb"><img src="images/tin-tuc/but-thap.jpg" alt="Chùa Bút Tháp" loading="lazy"><span class="credit">Ảnh: Tango7174 / Wikimedia, CC BY-SA 4.0</span></div><div class="body"><h3>Chùa Bút Tháp &amp; Chùa Dâu</h3><p>Hai ngôi chùa cổ kính bậc nhất Việt Nam, kiến trúc và tượng Phật quý.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ch%C3%B9a%20B%C3%BAt%20Th%C3%A1p%20B%E1%BA%AFc%20Ninh"><svg class="bi"><use href="#b-map"/></svg>Xem bản đồ</a></div></div>
+      <div class="place"><div class="thumb"><img src="images/tin-tuc/dong-ho.jpg" alt="Tranh Đông Hồ Mục đồng đọc sách" loading="lazy"><span class="credit">Tranh Đông Hồ / Wikimedia, phạm vi công cộng</span></div><div class="body"><h3>Làng tranh Đông Hồ</h3><p>Di sản UNESCO. Xem nghệ nhân in tranh và tự tay trải nghiệm.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=L%C3%A0ng%20tranh%20%C4%90%C3%B4ng%20H%E1%BB%93"><svg class="bi"><use href="#b-map"/></svg>Xem bản đồ</a></div></div>
+      <div class="place"><div class="thumb"><img src="images/tin-tuc/phu-lang.jpg" alt="Đồ gốm Phù Lãng" loading="lazy"><span class="credit">Ảnh: Bangnguyenbn11 / Wikimedia, CC0</span></div><div class="body"><h3>Làng gốm Phù Lãng</h3><p>Làng gốm khoảng 700 năm tuổi, nổi tiếng men da lươn. Có thể thử làm gốm.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=L%C3%A0ng%20g%E1%BB%91m%20Ph%C3%B9%20L%C3%A3ng"><svg class="bi"><use href="#b-map"/></svg>Xem bản đồ</a></div></div>
+      <div class="place"><div class="thumb"><img src="images/tin-tuc/quan-ho.jpg" alt="Hát Quan họ giao duyên" loading="lazy"><span class="credit">Ảnh: Nguyễn Đông Sơn / Wikimedia, CC BY-SA 3.0</span></div><div class="body"><h3>Làng Quan họ Diềm</h3><p>Làng Quan họ gốc, có đền Vua Bà và Nhà hát Dân ca Quan họ Bắc Ninh.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=L%C3%A0ng%20Di%E1%BB%81m%20B%E1%BA%AFc%20Ninh"><svg class="bi"><use href="#b-map"/></svg>Xem bản đồ</a></div></div>
+      <div class="place"><div class="thumb"><img src="images/tin-tuc/thanh-pho.jpg" alt="Thành phố Bắc Ninh về đêm" loading="lazy"><span class="credit">Ảnh: Luugiahuyskr / Wikimedia, CC BY-SA 4.0</span></div><div class="body"><h3>Trung tâm thành phố &amp; Vincom Plaza</h3><p>Mua sắm, ăn uống, rạp chiếu phim và khu vui chơi cho gia đình.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Vincom%20Plaza%20B%E1%BA%AFc%20Ninh"><svg class="bi"><use href="#b-map"/></svg>Xem bản đồ</a></div></div>
+    </div>
+    <p class="note" style="margin-top:26px">Ngày lễ hội truyền thống tính theo âm lịch, quý khách vui lòng kiểm tra lại trước khi đi. Ảnh tin tức thuộc bản quyền của các báo được ghi nguồn.</p>
+  </div>
+</section>
+
 <!-- LIÊN HỆ -->
 <section id="trang-lien-he" class="page" data-group="gioi-thieu" hidden>
   <div class="container">
@@ -474,11 +925,11 @@
     </div>
     <div class="contact">
       <div class="info">
-        <div class="item"><span class="ic">📍</span><div><small>Địa chỉ</small><b><a href="https://www.google.com/maps/search/?api=1&query=Minh%20Nh%E1%BA%ADt%20Luxury%20Hotel%2C%2057%20Nguy%E1%BB%85n%20%C4%90%C3%ACnh%20Chi%E1%BB%83u%2C%20V%C3%B5%20C%C6%B0%E1%BB%9Dng%2C%20B%E1%BA%AFc%20Ninh%2016118" target="_blank" rel="noopener">57 Nguyễn Đình Chiểu, Võ Cường, Bắc Ninh 16118</a></b><small><a href="https://www.google.com/maps/dir/?api=1&destination=Minh%20Nh%E1%BA%ADt%20Luxury%20Hotel%2C%2057%20Nguy%E1%BB%85n%20%C4%90%C3%ACnh%20Chi%E1%BB%83u%2C%20V%C3%B5%20C%C6%B0%E1%BB%9Dng%2C%20B%E1%BA%AFc%20Ninh%2016118" target="_blank" rel="noopener" style="color:var(--orange)">→ Chỉ đường bằng Google Maps</a></small></div></div>
-        <div class="item"><span class="ic">📞</span><div><small>Hotline đặt phòng</small><b><a href="tel:02222225678">0222 222 5678</a></b></div></div>
-        <div class="item"><span class="ic">💬</span><div><small>Facebook</small><b><a href="https://www.facebook.com/share/1dz3wBbjgg/" target="_blank" rel="noopener">Minh Nhật Luxury Hotel</a></b></div></div>
-        <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn">💬 Nhắn tin đặt phòng qua Messenger</a>
-        <a href="tel:02222225678" class="btn ghost-dark">📞 Gọi 0222 222 5678</a>
+        <div class="item"><span class="ic"><svg class="ico-md" aria-hidden="true"><use href="#i-pin"/></svg></span><div><small>Địa chỉ</small><b><a href="https://www.google.com/maps/search/?api=1&query=Minh%20Nh%E1%BA%ADt%20Luxury%20Hotel%2C%2057%20Nguy%E1%BB%85n%20%C4%90%C3%ACnh%20Chi%E1%BB%83u%2C%20V%C3%B5%20C%C6%B0%E1%BB%9Dng%2C%20B%E1%BA%AFc%20Ninh%2016118" target="_blank" rel="noopener">57 Nguyễn Đình Chiểu, Võ Cường, Bắc Ninh 16118</a></b><small><a href="https://www.google.com/maps/dir/?api=1&destination=Minh%20Nh%E1%BA%ADt%20Luxury%20Hotel%2C%2057%20Nguy%E1%BB%85n%20%C4%90%C3%ACnh%20Chi%E1%BB%83u%2C%20V%C3%B5%20C%C6%B0%E1%BB%9Dng%2C%20B%E1%BA%AFc%20Ninh%2016118" target="_blank" rel="noopener" style="color:var(--orange)">→ Chỉ đường bằng Google Maps</a></small></div></div>
+        <div class="item"><span class="ic"><svg class="ico-md" aria-hidden="true"><use href="#i-phone"/></svg></span><div><small>Hotline đặt phòng</small><b><a href="tel:02222225678">0222 222 5678</a></b></div></div>
+        <div class="item"><span class="ic"><svg class="ico-md" aria-hidden="true"><use href="#i-chat"/></svg></span><div><small>Facebook</small><b><a href="https://www.facebook.com/minhnhatluxuryhotel" target="_blank" rel="noopener">Minh Nhật Luxury Hotel</a></b></div></div>
+        <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-chat"/></svg>Nhắn tin đặt phòng qua Messenger</a>
+        <a href="tel:02222225678" class="btn ghost-dark"><svg class="bi" aria-hidden="true"><use href="#b-phone"/></svg>Gọi 0222 222 5678</a>
       </div>
       <div class="map">
         <iframe loading="lazy" title="Bản đồ Minh Nhật Luxury Hotel"
@@ -489,13 +940,13 @@
 </section>
 
 <footer>
-  <div class="container">© 2026 <b>Minh Nhật Luxury Hotel</b> · 57 Nguyễn Đình Chiểu, Võ Cường, Bắc Ninh · 0222 222 5678 · <a href="https://www.facebook.com/share/1dz3wBbjgg/" target="_blank" rel="noopener" style="color:var(--orange-2)">Facebook</a></div>
+  <div class="container">© 2026 <b>Minh Nhật Luxury Hotel</b> · 57 Nguyễn Đình Chiểu, Võ Cường, Bắc Ninh · 0222 222 5678 · <a href="https://www.facebook.com/minhnhatluxuryhotel" target="_blank" rel="noopener" style="color:var(--orange-2)">Facebook</a></div>
 </footer>
 
 <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="msg-float" aria-label="Nhắn tin Messenger">
   <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.14.26.35.27.57l.05 1.78c.02.57.6.94 1.12.71l1.98-.87c.17-.08.36-.09.54-.04.91.25 1.87.38 2.9.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm6 7.46-2.94 4.66c-.47.74-1.47.93-2.17.4l-2.34-1.75a.6.6 0 0 0-.72 0l-3.16 2.4c-.42.32-.97-.18-.69-.63l2.94-4.66c.47-.74 1.47-.93 2.17-.4l2.34 1.75c.21.16.51.16.72 0l3.16-2.4c.42-.32.97.18.69.63z"/></svg>
 </a>
-<a href="tel:02222225678" class="call-float" aria-label="Gọi đặt phòng">📞</a>
+<a href="tel:02222225678" class="call-float" aria-label="Gọi đặt phòng"><svg class="bi-lg" aria-hidden="true"><use href="#b-phone"/></svg></a>
 
 <script>
   // Sơ đồ phòng: tầng 2–6, mỗi tầng 5 phòng (x01–x05)
@@ -523,16 +974,37 @@
   }
   // Thư viện ảnh: ẩn chữ chú thích nếu ảnh chưa có, bấm để phóng to
   const lb = document.getElementById('lightbox');
-  document.querySelectorAll('.gallery img').forEach(img => {
+  document.querySelectorAll('.gallery img, .gift .thumb img').forEach(img => {
     img.addEventListener('error', () => { img.style.visibility = 'hidden'; });
     if (img.complete && img.naturalWidth === 0) img.style.visibility = 'hidden';
-    img.closest('figure').addEventListener('click', () => {
+    img.closest('figure, .thumb').addEventListener('click', () => {
       if (img.style.visibility === 'hidden') return;
       lb.querySelector('img').src = img.src; lb.classList.add('open');
     });
   });
   lb.addEventListener('click', () => lb.classList.remove('open'));
   document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => document.getElementById('menu').classList.remove('open')));
+
+  // Messenger trên iPhone/iPad: link m.me hay bị chuyển sang App Store thay vì mở cuộc trò chuyện.
+  // - Có FB_PAGE_ID: mở thẳng app Messenger tới khách sạn; nếu máy chưa có app thì sau 1,5 giây chuyển sang bản web.
+  // - Chưa có FB_PAGE_ID: dùng link messenger.com (mở app nếu có, không thì nhắn trên trình duyệt).
+  const FB_USER = 'minhnhatluxuryhotel';
+  const FB_PAGE_ID = '106201732070792'; // ID Trang Facebook Minh Nhật Luxury Hotel
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (isIOS) {
+    const webLink = 'https://www.messenger.com/t/' + (FB_PAGE_ID || FB_USER);
+    document.querySelectorAll('a[href^="https://m.me/"]').forEach(a => {
+      a.href = webLink;
+      a.removeAttribute('target');
+      a.addEventListener('click', e => {
+        if (!FB_PAGE_ID) return;
+        e.preventDefault();
+        const start = Date.now();
+        location.href = 'fb-messenger://user-thread/' + FB_PAGE_ID;
+        setTimeout(() => { if (!document.hidden && Date.now() - start < 3000) location.href = webLink; }, 1500);
+      });
+    });
+  }
 
   // Chuyển trang: các phần cùng data-group hiện chung một trang, địa chỉ dạng #phong, #bang-gia...
   // Link tới phần phụ (#lien-he, #so-do, #gio) mở trang chứa nó rồi cuộn tới phần đó.
