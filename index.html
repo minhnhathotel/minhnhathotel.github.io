@@ -8,6 +8,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" type="image/png" href="images/logo-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#4e1519">
+<link rel="apple-touch-icon" href="images/app/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Minh Nhật">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&family=Josefin+Sans:wght@300&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -330,6 +337,76 @@
     .cell{font-size:.9rem;padding:10px 2px}
     .cell small{font-size:.6rem}
   }
+  /* Banner đặt phòng & cài app ở trang chủ */
+  .book-banner{display:flex;align-items:center;gap:18px;background:linear-gradient(135deg,var(--maroon),#2c0b0e);color:#fff;border-radius:18px;padding:18px 22px;margin-bottom:16px;--ic-line:#f3e0c8;transition:.2s}
+  .book-banner:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(78,21,25,.25)}
+  .book-banner .ico{width:56px;height:56px;margin:0;flex:none}
+  .book-banner > span:nth-child(2){flex:1}
+  .book-banner b{display:block;font-size:1.2rem;color:var(--orange-2)}
+  .book-banner small{color:#e9d9d3}
+  .install-card{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:16px;position:relative}
+  .install-card[hidden]{display:none}
+  .install-card img{width:48px;height:48px;border-radius:12px}
+  .install-card > span{flex:1}
+  .install-card b{display:block;color:var(--maroon)}
+  .install-card small{color:var(--muted);font-size:.84rem}
+  .install-card .btn{padding:10px 16px;font-size:.9rem}
+  .install-x{border:0;background:none;font-size:1.4rem;color:var(--muted);cursor:pointer;padding:0 4px}
+
+  /* Đặt phòng online */
+  .bk{max-width:860px}
+  .bk-step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:16px}
+  .bk-step h3{display:flex;align-items:center;gap:10px;color:var(--maroon);font-size:1.1rem;margin-bottom:14px}
+  .bk-step h3 span{width:28px;height:28px;border-radius:50%;background:var(--orange);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;flex:none}
+  .bk-step h3 i,.bk-field i{font-style:normal;font-weight:400;color:var(--muted);font-size:.85rem}
+  .bk-options,.bk-rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .bk-options input,.bk-rooms input,.bk-services input{position:absolute;opacity:0;pointer-events:none}
+  .bk-options label,.bk-rooms label,.bk-services label{cursor:pointer;position:relative}
+  .bk-options span{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;border:2px solid var(--line);border-radius:14px;padding:14px 8px;height:100%;transition:.15s}
+  .bk-options .ico-sm{width:40px;height:40px}
+  .bk-options small,.bk-rooms small{color:var(--muted);font-size:.8rem}
+  .bk-rooms span{display:flex;flex-direction:column;border:2px solid var(--line);border-radius:14px;overflow:hidden;height:100%;transition:.15s}
+  .bk-rooms img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .bk-rooms b{padding:10px 12px 0;color:var(--maroon)}
+  .bk-rooms small{padding:0 12px 12px;font-weight:600;color:var(--orange)}
+  .bk-options input:checked + span,.bk-rooms input:checked + span{border-color:var(--orange);background:#fff8ef;box-shadow:0 0 0 3px rgba(232,144,42,.18)}
+  .bk-options input:focus-visible + span,.bk-rooms input:focus-visible + span,.bk-services input:focus-visible + span{outline:2px solid var(--maroon);outline-offset:2px}
+  .bk-services{display:flex;flex-wrap:wrap;gap:8px}
+  .bk-services span{display:inline-block;border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;font-size:.9rem;font-weight:500;transition:.15s}
+  .bk-services input:checked + span{border-color:var(--orange);background:var(--orange);color:#fff}
+  .bk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .bk-field{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:.9rem;color:var(--ink);margin-top:12px}
+  .bk-grid .bk-field{margin-top:0}
+  .bk-field input,.bk-field select,.bk-field textarea{font:inherit;font-weight:400;font-size:1rem;border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;background:var(--cream);color:var(--ink);width:100%;min-width:0}
+  .bk-field input:focus,.bk-field select:focus,.bk-field textarea:focus{outline:none;border-color:var(--orange);background:#fff}
+  .bk-field.err input{border-color:#c62828;background:#fff5f5}
+  .bk-stepper{display:flex;align-items:stretch}
+  .bk-stepper button{width:44px;border:1.5px solid var(--line);background:#fff;font-size:1.2rem;color:var(--maroon);cursor:pointer}
+  .bk-stepper button:first-child{border-radius:12px 0 0 12px}
+  .bk-stepper button:last-child{border-radius:0 12px 12px 0}
+  .bk-stepper input{border-radius:0;border-left:0;border-right:0;text-align:center}
+  .bk-note{font-size:.85rem;color:var(--muted);margin-top:10px}
+  .bk-note.warn{color:#b3261e;font-weight:600}
+  .bk-sum{position:sticky;bottom:12px;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(135deg,var(--maroon),#2c0b0e);color:#fff;border-radius:18px;padding:16px 20px;box-shadow:0 12px 30px rgba(44,11,14,.3)}
+  .bk-sum small{display:block;color:#e9d9d3;font-size:.8rem}
+  .bk-sum b{font-size:1.4rem;color:var(--orange-2)}
+  .bk-sum span{display:block;font-size:.8rem;color:#e9d9d3}
+  .bk-done pre{white-space:pre-wrap;font:inherit;font-size:.85rem;background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:12px;max-height:38vh;overflow:auto;margin:10px 0 12px}
+  .bk-done .bk-send{width:100%;justify-content:center;margin-bottom:8px;background:#0084ff}
+
+  /* Thanh tab khi mở bằng app đã cài */
+  .tabbar{display:none}
+  body.is-app .tabbar{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:80;background:#fff;border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom));box-shadow:0 -4px 16px rgba(0,0,0,.08)}
+  .tabbar a{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:.7rem;font-weight:600;color:var(--muted);padding:4px 0}
+  .tabbar svg{width:24px;height:24px}
+  .tabbar a.on{color:var(--maroon)}
+  .tabbar .tab-main svg{width:46px;height:46px;padding:11px;margin-top:-22px;border-radius:50%;background:var(--orange);color:#fff;box-shadow:0 6px 16px rgba(232,144,42,.45)}
+  .tabbar .tab-main{color:var(--orange)}
+  body.is-app .mbar,body.is-app .msg-float,body.is-app .call-float{display:none!important}
+  body.is-app footer{padding-bottom:90px}
+  body.is-app .bk-sum{bottom:78px}
+  body.is-app header{padding-top:env(safe-area-inset-top)}
+
   /* Hộp hướng dẫn khi mở web trong Zalo */
   .ih{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center;padding:12px}
   .ih[hidden]{display:none}
@@ -432,6 +509,29 @@
     .mbar .call{background:#fff;color:var(--maroon);border:2px solid var(--maroon)}
     .mbar .chat{background:#0084ff;color:#fff}
     footer{padding-bottom:84px}
+
+    /* Đặt phòng trên điện thoại */
+    .book-banner{padding:14px 16px;gap:12px}
+    .book-banner .ico{width:44px;height:44px}
+    .book-banner b{font-size:1.05rem}
+    .book-banner small{font-size:.8rem}
+    .book-banner .btn{display:none}
+    .install-card small{font-size:.78rem}
+    .bk-step{padding:16px;border-radius:14px;margin-bottom:12px}
+    .bk-options{gap:8px}
+    .bk-options span{padding:10px 4px}
+    .bk-options b{font-size:.9rem}
+    .bk-options small{font-size:.7rem}
+    .bk-rooms{grid-template-columns:1fr;gap:8px}
+    .bk-rooms span{flex-direction:row;align-items:center}
+    .bk-rooms img{width:96px;aspect-ratio:1;flex:none}
+    .bk-rooms b{padding:0 12px;flex:1}
+    .bk-rooms small{padding:0 12px}
+    .bk-grid{grid-template-columns:1fr 1fr;gap:10px}
+    .bk-sum{padding:12px 14px;bottom:8px;border-radius:14px}
+    .bk-sum b{font-size:1.15rem}
+    .bk-sum .btn{padding:12px 14px;font-size:.88rem}
+    body.show-bar .bk-sum{bottom:76px}
 
     /* Thanh trên chỉ hiện khi gần đầu trang, thanh dưới chỉ hiện khi gần cuối trang */
     header{transition:transform .3s ease}
@@ -580,6 +680,11 @@
   <!-- icon nét cho nút (màu theo chữ) -->
   <symbol id="b-chat" viewBox="0 0 24 24"><path d="M12 3c5 0 9 3.6 9 8s-4 8-9 8c-1 0-2-.1-3-.4L4 21l1.3-4A7.7 7.7 0 0 1 3 11c0-4.4 4-8 9-8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 11h.01M12 11h.01M16 11h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
   <symbol id="b-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="b-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="b-bed" viewBox="0 0 24 24"><path d="M3 18V6M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5M7 11.5a1.5 1.5 0 1 0 0-.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="b-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4M9 15l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="b-gift" viewBox="0 0 24 24"><path d="M4 11h16v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1ZM3 7h18v4H3ZM12 7v14M12 7S10.5 3 8 3.5 7 7 12 7ZM12 7s1.5-4 4-3.5S17 7 12 7Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="b-dl" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="b-map" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
 </svg>
 
@@ -596,7 +701,7 @@
       <a href="#tin-tuc">Tin tức</a>
       <a href="#lien-he">Liên hệ</a>
     </nav>
-    <a href="tel:02222225678" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-phone"/></svg>0222 222 5678</a>
+    <a href="#dat-phong" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-cal"/></svg>Đặt phòng online</a>
     <button class="burger" aria-label="Mở menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
   </div>
 </header>
@@ -611,7 +716,7 @@
       <h1 class="brand">MINH NHẬT<small>LUXURY HOTEL</small></h1>
       <p>Không gian sang trọng, phòng được trang trí tinh tế, phục vụ tận tâm. Thuê theo giờ, nghỉ đêm hoặc nghỉ ngày, giá rõ ràng.</p>
       <div class="hero-actions">
-        <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-chat"/></svg>Đặt phòng ngay</a>
+        <a href="#dat-phong" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-cal"/></svg>Đặt phòng ngay</a>
         <a href="#bang-gia" class="btn ghost">Xem bảng giá</a>
       </div>
     </div>
@@ -629,6 +734,17 @@
 
 <section id="muc">
   <div class="container">
+    <a href="#dat-phong" class="book-banner">
+      <svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg>
+      <span><b>Đặt phòng online</b><small>Chọn phòng, ngày giờ và dịch vụ chỉ trong 1 phút</small></span>
+      <span class="btn">Đặt ngay →</span>
+    </a>
+    <div class="install-card" id="install-card" hidden>
+      <img src="images/app/app-192.png" alt="">
+      <span><b>Cài app Minh Nhật</b><small id="install-hint">Mở nhanh từ màn hình điện thoại, đặt phòng chỉ với vài chạm.</small></span>
+      <button class="btn" id="install-btn"><svg class="bi" aria-hidden="true"><use href="#b-dl"/></svg>Cài app</button>
+      <button class="install-x" id="install-x" aria-label="Ẩn">×</button>
+    </div>
     <div class="tiles">
       <a href="#phong" class="tile" style="--img:url('images/vip-4.jpg')"><span class="arrow">→</span><b>Các loại phòng</b><small>VIP · Đôi · Thường · Sơ đồ phòng</small></a>
       <a href="#bang-gia" class="tile" style="--img:url('images/vip-5.jpg')"><span class="arrow">→</span><b>Bảng giá &amp; Giờ nhận/trả</b><small>Nghỉ đêm 20:00 – 10:00</small></a>
@@ -680,7 +796,7 @@
             <li>Nghỉ ngày <small>(12h – 10h)</small><b>730.000đ</b></li>
           </ul>
           <p class="nums">8 phòng: <b>301, 302, 401, 402, 501, 502, 601, 602</b></p>
-          <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-chat"/></svg>Đặt phòng VIP</a>
+          <a href="#dat-phong-vip" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-cal"/></svg>Đặt phòng VIP</a>
         </div>
       </article>
       <article class="room">
@@ -694,7 +810,7 @@
             <li>Nghỉ ngày <small>(12h – 10h)</small><b>730.000đ</b></li>
           </ul>
           <p class="nums">2 phòng: <b>201, 202</b></p>
-          <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-chat"/></svg>Đặt phòng Đôi</a>
+          <a href="#dat-phong-doi" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-cal"/></svg>Đặt phòng Đôi</a>
         </div>
       </article>
       <article class="room">
@@ -708,7 +824,7 @@
             <li>Nghỉ ngày <small>(12h – 10h)</small><b>580.000đ</b></li>
           </ul>
           <p class="nums">Các phòng <b>x04, x05</b> (204 → 605). Các phòng <b>x03</b> (203 → 603) có cửa sổ hướng hành lang.</p>
-          <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-chat"/></svg>Đặt phòng Thường</a>
+          <a href="#dat-phong-thuong" class="btn"><svg class="bi" aria-hidden="true"><use href="#b-cal"/></svg>Đặt phòng Thường</a>
         </div>
       </article>
     </div>
@@ -818,6 +934,97 @@
     </div>
   </div>
 </section>
+
+<!-- ĐẶT PHÒNG ONLINE
+     Giá và danh sách phòng lấy từ biến GIA và PHONG trong phần <script> cuối trang. Đổi giá thì sửa ở đó. -->
+<section id="trang-dat-phong" class="page" data-group="dat-phong" hidden>
+  <div class="container bk">
+    <a href="#" class="back">← Trang chủ</a>
+    <div class="head">
+      <span class="eyebrow">Đặt phòng online</span>
+      <h2 class="serif">Đặt phòng</h2>
+      <p>Chọn phòng, thời gian và dịch vụ. Lễ tân sẽ xác nhận lại với quý khách qua tin nhắn hoặc điện thoại. Thanh toán tại khách sạn.</p>
+    </div>
+
+    <form id="bk-form" novalidate>
+      <div class="bk-step">
+        <h3><span>1</span>Hình thức</h3>
+        <div class="bk-options" id="bk-type">
+          <label><input type="radio" name="type" value="gio"><span><svg class="ico-sm" aria-hidden="true"><use href="#i-clock"/></svg><b>Theo giờ</b><small>Nhận khách đến 22:00</small></span></label>
+          <label><input type="radio" name="type" value="dem" checked><span><svg class="ico-sm" aria-hidden="true"><use href="#i-moon"/></svg><b>Nghỉ đêm</b><small>20:00 – 10:00 hôm sau</small></span></label>
+          <label><input type="radio" name="type" value="ngay"><span><svg class="ico-sm" aria-hidden="true"><use href="#i-sun"/></svg><b>Nghỉ ngày</b><small>12:00 – 10:00 hôm sau</small></span></label>
+        </div>
+      </div>
+
+      <div class="bk-step">
+        <h3><span>2</span>Loại phòng</h3>
+        <div class="bk-rooms" id="bk-room">
+          <label><input type="radio" name="room" value="vip" checked><span><img src="images/vip-1.jpg" alt=""><b>Phòng VIP</b><small class="bk-price" data-room="vip"></small></span></label>
+          <label><input type="radio" name="room" value="doi"><span><img src="images/phong-doi.jpg" alt=""><b>Phòng Đôi</b><small class="bk-price" data-room="doi"></small></span></label>
+          <label><input type="radio" name="room" value="thuong"><span><img src="images/phong-thuong.jpg" alt=""><b>Phòng Thường</b><small class="bk-price" data-room="thuong"></small></span></label>
+        </div>
+        <label class="bk-field"><span>Phòng mong muốn <i>(không bắt buộc)</i></span>
+          <select name="roomNo" id="bk-roomno"></select>
+        </label>
+      </div>
+
+      <div class="bk-step">
+        <h3><span>3</span>Thời gian</h3>
+        <div class="bk-grid">
+          <label class="bk-field">Ngày nhận phòng<input type="date" name="date" id="bk-date" required></label>
+          <label class="bk-field" id="bk-time-wrap">Giờ nhận phòng<input type="time" name="time" id="bk-time" value="14:00"></label>
+          <label class="bk-field" id="bk-qty-wrap"><span id="bk-qty-label">Số đêm</span>
+            <div class="bk-stepper"><button type="button" data-d="-1" aria-label="Giảm">−</button><input type="number" name="qty" id="bk-qty" value="1" min="1" max="10" inputmode="numeric"><button type="button" data-d="1" aria-label="Tăng">+</button></div>
+          </label>
+          <label class="bk-field">Số khách
+            <div class="bk-stepper"><button type="button" data-d="-1" aria-label="Giảm">−</button><input type="number" name="guests" value="2" min="1" max="6" inputmode="numeric"><button type="button" data-d="1" aria-label="Tăng">+</button></div>
+          </label>
+        </div>
+        <p class="bk-note" id="bk-time-note"></p>
+      </div>
+
+      <div class="bk-step">
+        <h3><span>4</span>Dịch vụ thêm <i>(báo giá sau)</i></h3>
+        <div class="bk-services">
+          <label><input type="checkbox" name="sv" value="Trang trí sinh nhật"><span>Trang trí sinh nhật</span></label>
+          <label><input type="checkbox" name="sv" value="Trang trí kỷ niệm / Valentine"><span>Trang trí kỷ niệm</span></label>
+          <label><input type="checkbox" name="sv" value="Trang trí cầu hôn"><span>Trang trí cầu hôn</span></label>
+          <label><input type="checkbox" name="sv" value="Bánh kem"><span>Bánh kem</span></label>
+          <label><input type="checkbox" name="sv" value="Hoa hồng, cánh hoa"><span>Hoa hồng, cánh hoa</span></label>
+          <label><input type="checkbox" name="sv" value="Rượu vang"><span>Rượu vang</span></label>
+          <label><input type="checkbox" name="sv" value="Nhờ sắp xếp bánh/quà khách mang đến"><span>Sắp xếp quà tự mang</span></label>
+          <label><input type="checkbox" name="sv" value="Nhận phòng sớm / trả phòng muộn"><span>Nhận sớm / trả muộn</span></label>
+        </div>
+      </div>
+
+      <div class="bk-step">
+        <h3><span>5</span>Thông tin liên hệ</h3>
+        <div class="bk-grid">
+          <label class="bk-field">Họ và tên<input type="text" name="name" id="bk-name" autocomplete="name" required placeholder="Nguyễn Văn A"></label>
+          <label class="bk-field">Số điện thoại<input type="tel" name="phone" id="bk-phone" autocomplete="tel" inputmode="tel" required placeholder="09xx xxx xxx"></label>
+        </div>
+        <label class="bk-field"><span>Ghi chú <i>(không bắt buộc)</i></span><textarea name="note" rows="3" placeholder="Ví dụ: tên người được chúc mừng, màu bóng bay, giờ đến dự kiến…"></textarea></label>
+      </div>
+
+      <div class="bk-sum" id="bk-sum">
+        <div><small>Tạm tính</small><b id="bk-total">—</b><span id="bk-detail"></span></div>
+        <button type="submit" class="btn">Gửi yêu cầu đặt phòng</button>
+      </div>
+      <p class="bk-note">Giá tạm tính chưa gồm dịch vụ thêm và có thể thay đổi dịp lễ, Tết. Phòng mong muốn tùy tình trạng phòng trống.</p>
+    </form>
+  </div>
+</section>
+
+<div class="ih" id="bk-done" hidden>
+  <div class="ih-box bk-done" role="dialog" aria-label="Gửi yêu cầu đặt phòng">
+    <button class="ih-close" aria-label="Đóng">×</button>
+    <h3>Gửi yêu cầu cho khách sạn</h3>
+    <p>Nội dung đặt phòng đã được soạn sẵn. Bấm nút dưới đây: nội dung sẽ được <b>sao chép</b> và mở <b>Messenger</b> của khách sạn. Quý khách chỉ cần <b>dán</b> vào ô tin nhắn rồi gửi.</p>
+    <pre id="bk-msg"></pre>
+    <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="btn bk-send" id="bk-send"><svg class="bi" aria-hidden="true"><use href="#b-chat"/></svg>Sao chép &amp; mở Messenger</a>
+    <a href="tel:02222225678" class="btn ghost-dark ih-call"><svg class="bi" aria-hidden="true"><use href="#b-phone"/></svg>Hoặc gọi 0222 222 5678</a>
+  </div>
+</div>
 
 <!-- ĐẶT PHÒNG NGÀY ĐẶC BIỆT -->
 <section id="trang-dac-biet" class="page" data-group="dac-biet" hidden>
@@ -1068,9 +1275,16 @@
     <a href="tel:02222225678" class="btn ih-call"><svg class="bi" aria-hidden="true"><use href="#b-phone"/></svg>Hoặc gọi ngay 0222 222 5678</a>
   </div>
 </div>
+<nav class="tabbar" aria-label="Điều hướng app">
+  <a href="#" data-tab=""><svg aria-hidden="true"><use href="#b-home"/></svg>Trang chủ</a>
+  <a href="#phong" data-tab="phong"><svg aria-hidden="true"><use href="#b-bed"/></svg>Phòng</a>
+  <a href="#dat-phong" data-tab="dat-phong" class="tab-main"><svg aria-hidden="true"><use href="#b-cal"/></svg>Đặt phòng</a>
+  <a href="#qua-tang" data-tab="qua-tang"><svg aria-hidden="true"><use href="#b-gift"/></svg>Ưu đãi</a>
+  <a href="#gioi-thieu" data-tab="gioi-thieu"><svg aria-hidden="true"><use href="#b-phone"/></svg>Liên hệ</a>
+</nav>
 <nav class="mbar" aria-label="Đặt phòng nhanh">
   <a href="tel:02222225678" class="call"><svg class="bi" aria-hidden="true"><use href="#b-phone"/></svg>Gọi ngay</a>
-  <a href="https://m.me/minhnhatluxuryhotel" target="_blank" rel="noopener" class="chat"><svg class="bi" aria-hidden="true"><use href="#b-chat"/></svg>Nhắn tin đặt phòng</a>
+  <a href="#dat-phong" class="chat"><svg class="bi" aria-hidden="true"><use href="#b-cal"/></svg>Đặt phòng online</a>
 </nav>
 <a href="tel:02222225678" class="call-float" aria-label="Gọi đặt phòng"><svg class="bi-lg" aria-hidden="true"><use href="#b-phone"/></svg></a>
 
@@ -1191,12 +1405,138 @@
   addEventListener('hashchange', () => setTimeout(updateBars, 50));
   document.querySelector('.burger').addEventListener('click', () => setTimeout(updateBars, 0));
 
+  // ===== ĐẶT PHÒNG ONLINE =====
+  // Bảng giá (VNĐ). Đổi giá thì sửa ở đây, giá trên form tự cập nhật.
+  const GIA = {
+    vip:    {ten:'Phòng VIP',    gioDau:200000, gioTiep:50000, dem:580000, ngay:730000},
+    doi:    {ten:'Phòng Đôi',    gioDau:200000, gioTiep:50000, dem:580000, ngay:730000},
+    thuong: {ten:'Phòng Thường', gioDau:150000, gioTiep:30000, dem:430000, ngay:580000}
+  };
+  const PHONG = {
+    vip: ['301','302','401','402','501','502','601','602'],
+    doi: ['201','202'],
+    thuong: ['204','205','304','305','404','405','504','505','604','605','203 (cửa sổ hành lang)','303 (cửa sổ hành lang)','403 (cửa sổ hành lang)','503 (cửa sổ hành lang)','603 (cửa sổ hành lang)']
+  };
+  const HINH_THUC = {gio:'Theo giờ', dem:'Nghỉ đêm', ngay:'Nghỉ ngày'};
+  const bk = document.getElementById('bk-form');
+  const money = n => n.toLocaleString('vi-VN') + 'đ';
+  const val = n => (bk.querySelector('[name="' + n + '"]:checked') || bk.elements[n]).value;
+  function setRoom(r){ const el = bk.querySelector('input[name="room"][value="' + r + '"]'); if (el) { el.checked = true; bkUpdate(); } }
+  function pad(n){ return String(n).padStart(2, '0'); }
+  const today = new Date(); const todayStr = today.getFullYear() + '-' + pad(today.getMonth() + 1) + '-' + pad(today.getDate());
+  const dateEl = document.getElementById('bk-date'); dateEl.min = todayStr; dateEl.value = todayStr;
+  let lastRoom = '';
+  function bkUpdate(){
+    const type = val('type'), room = val('room'), g = GIA[room];
+    const qtyEl = document.getElementById('bk-qty'); const qty = Math.max(1, Math.min(10, parseInt(qtyEl.value) || 1));
+    document.getElementById('bk-time-wrap').hidden = type !== 'gio';
+    document.getElementById('bk-qty-label').textContent = type === 'gio' ? 'Số giờ' : type === 'dem' ? 'Số đêm' : 'Số ngày';
+    bk.querySelectorAll('.bk-price').forEach(el => {
+      const p = GIA[el.dataset.room];
+      el.textContent = type === 'gio' ? money(p.gioDau) + ' giờ đầu' : money(p[type]) + (type === 'dem' ? ' / đêm' : ' / ngày');
+    });
+    if (room !== lastRoom) {
+      document.getElementById('bk-roomno').innerHTML = '<option value="">Không yêu cầu – khách sạn sắp xếp</option>' + PHONG[room].map(p => '<option>' + p + '</option>').join('');
+      lastRoom = room;
+    }
+    const note = document.getElementById('bk-time-note'); note.classList.remove('warn');
+    let total, detail;
+    if (type === 'gio') {
+      total = g.gioDau + g.gioTiep * (qty - 1);
+      detail = qty + ' giờ · ' + g.ten;
+      const t = document.getElementById('bk-time').value;
+      if (t && t > '22:00') { note.textContent = 'Sau 22:00 khách sạn không nhận nghỉ giờ, vui lòng chọn Nghỉ đêm.'; note.classList.add('warn'); }
+      else note.textContent = 'Nhận khách nghỉ giờ đến 22:00. Giờ đầu ' + money(g.gioDau) + ', mỗi giờ tiếp theo ' + money(g.gioTiep) + '.';
+    } else {
+      total = g[type] * qty;
+      detail = qty + (type === 'dem' ? ' đêm' : ' ngày') + ' · ' + g.ten;
+      note.textContent = type === 'dem' ? 'Nhận phòng từ 20:00, trả phòng trước 10:00 sáng hôm sau.' : 'Nhận phòng từ 12:00, trả phòng trước 10:00 sáng hôm sau.';
+    }
+    document.getElementById('bk-total').textContent = money(total);
+    document.getElementById('bk-detail').textContent = detail;
+    return {type, room, qty, total};
+  }
+  bk.addEventListener('input', bkUpdate);
+  bk.addEventListener('change', bkUpdate);
+  bk.querySelectorAll('.bk-stepper button').forEach(b => b.addEventListener('click', () => {
+    const inp = b.parentElement.querySelector('input');
+    inp.value = Math.max(+inp.min, Math.min(+inp.max, (parseInt(inp.value) || 1) + +b.dataset.d)); bkUpdate();
+  }));
+  // Nhớ tên, số điện thoại cho lần đặt sau (chỉ lưu trên máy khách)
+  try { const s = JSON.parse(localStorage.getItem('mn-khach') || '{}'); if (s.name) bk.elements.name.value = s.name; if (s.phone) bk.elements.phone.value = s.phone; } catch (_) {}
+  bkUpdate();
+
+  bk.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = bk.elements.name.value.trim(), phone = bk.elements.phone.value.replace(/[^\d+]/g, '');
+    let ok = true;
+    [['bk-name', name.length >= 2], ['bk-phone', /^(\+?84|0)\d{9,10}$/.test(phone)], ['bk-date', !!dateEl.value && dateEl.value >= todayStr]].forEach(([id, good]) => {
+      document.getElementById(id).closest('.bk-field').classList.toggle('err', !good); if (!good) ok = false;
+    });
+    const s = bkUpdate();
+    if (s.type === 'gio' && document.getElementById('bk-time').value > '22:00') ok = false;
+    if (!ok) { bk.querySelector('.err input, .bk-note.warn')?.scrollIntoView({block:'center', behavior:'smooth'}); return; }
+    try { localStorage.setItem('mn-khach', JSON.stringify({name, phone: bk.elements.phone.value})); } catch (_) {}
+    const [y, m, d] = dateEl.value.split('-');
+    const services = [...bk.querySelectorAll('input[name="sv"]:checked')].map(i => i.value);
+    const lines = [
+      'YÊU CẦU ĐẶT PHÒNG – MINH NHẬT LUXURY HOTEL',
+      '• Hình thức: ' + HINH_THUC[s.type],
+      '• Loại phòng: ' + GIA[s.room].ten + (bk.elements.roomNo.value ? ' (mong muốn phòng ' + bk.elements.roomNo.value + ')' : ''),
+      '• Ngày nhận phòng: ' + d + '/' + m + '/' + y + (s.type === 'gio' ? ' lúc ' + bk.elements.time.value : s.type === 'dem' ? ' từ 20:00' : ' từ 12:00'),
+      '• ' + (s.type === 'gio' ? 'Số giờ: ' : s.type === 'dem' ? 'Số đêm: ' : 'Số ngày: ') + s.qty,
+      '• Số khách: ' + bk.elements.guests.value,
+      '• Dịch vụ thêm: ' + (services.length ? services.join(', ') : 'Không'),
+      '• Tạm tính: ' + money(s.total) + (services.length ? ' (chưa gồm dịch vụ)' : ''),
+      '• Khách: ' + name + ' – ' + bk.elements.phone.value.trim()
+    ];
+    if (bk.elements.note.value.trim()) lines.push('• Ghi chú: ' + bk.elements.note.value.trim());
+    document.getElementById('bk-msg').textContent = lines.join('\n');
+    document.getElementById('bk-done').hidden = false;
+  });
+  const done = document.getElementById('bk-done');
+  done.addEventListener('click', e => { if (e.target === done || e.target.closest('.ih-close')) done.hidden = true; });
+  // Sao chép nội dung trước khi mở Messenger (chạy trước các xử lý mở app ở trên)
+  function copyBooking(){
+    const text = document.getElementById('bk-msg').textContent;
+    const ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
+    try { document.execCommand('copy'); } catch (_) {}
+    ta.remove();
+    try { navigator.clipboard && navigator.clipboard.writeText(text).catch(() => {}); } catch (_) {}
+  }
+  const sendBtn = document.getElementById('bk-send');
+  sendBtn.addEventListener('pointerdown', copyBooking);
+  sendBtn.addEventListener('click', copyBooking, true);
+
+  // ===== APP: cài đặt & giao diện app =====
+  const isStandalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  if (isStandalone) document.body.classList.add('is-app');
+  if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
+  const card = document.getElementById('install-card'), hint = document.getElementById('install-hint'), ibtn = document.getElementById('install-btn');
+  let dismissed = false; try { dismissed = localStorage.getItem('mn-install-x') === '1'; } catch (_) {}
+  let deferred = null;
+  const isIOSDevice = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferred = e; if (!isStandalone && !dismissed) card.hidden = false; });
+  if (!isStandalone && !dismissed && (isIOSDevice || inApp)) card.hidden = false;
+  ibtn.addEventListener('click', async () => {
+    if (deferred) { deferred.prompt(); const r = await deferred.userChoice; if (r.outcome === 'accepted') card.hidden = true; deferred = null; return; }
+    if (inApp) { showHelp('trình duyệt để cài app'); return; }
+    if (isIOSDevice) { hint.innerHTML = 'Trên Safari: bấm nút <b>Chia sẻ</b> (ô vuông có mũi tên lên) → chọn <b>“Thêm vào MH chính”</b>.'; return; }
+    hint.innerHTML = 'Mở menu <b>⋮</b> của trình duyệt → chọn <b>“Cài đặt ứng dụng”</b> hoặc <b>“Thêm vào màn hình chính”</b>.';
+  });
+  document.getElementById('install-x').addEventListener('click', () => { card.hidden = true; try { localStorage.setItem('mn-install-x', '1'); } catch (_) {} });
+  addEventListener('appinstalled', () => { card.hidden = true; });
+
   // Chuyển trang: các phần cùng data-group hiện chung một trang, địa chỉ dạng #phong, #bang-gia...
   // Link tới phần phụ (#lien-he, #so-do, #gio) mở trang chứa nó rồi cuộn tới phần đó.
   const pages = [...document.querySelectorAll('.page')];
   const groupOf = h => { const el = document.getElementById('trang-' + h); return el && el.dataset.group ? el.dataset.group : 'chu'; };
   function route(){
-    const hash = location.hash.slice(1);
+    let hash = location.hash.slice(1);
+    const pre = hash.match(/^dat-phong-(vip|doi|thuong)$/);
+    if (pre) { hash = 'dat-phong'; setRoom(pre[1]); }
+    document.querySelectorAll('.tabbar a').forEach(a => a.classList.toggle('on', a.dataset.tab === (groupOf(hash) === 'chu' ? '' : groupOf(hash))));
     const group = groupOf(hash);
     pages.forEach(p => p.hidden = p.dataset.group !== group);
     document.querySelectorAll('#menu a').forEach(a => {

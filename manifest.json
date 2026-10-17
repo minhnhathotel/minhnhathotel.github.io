@@ -1,0 +1,21 @@
+{
+  "name": "Minh Nhật Luxury Hotel",
+  "short_name": "Minh Nhật",
+  "description": "Đặt phòng online, xem phòng, bảng giá và ưu đãi của Minh Nhật Luxury Hotel – Bắc Ninh.",
+  "lang": "vi",
+  "start_url": "./?app=1",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#4e1519",
+  "theme_color": "#4e1519",
+  "icons": [
+    { "src": "images/app/app-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "images/app/app-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "images/app/app-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Đặt phòng online", "url": "./#dat-phong", "icons": [{ "src": "images/app/app-192.png", "sizes": "192x192" }] },
+    { "name": "Bảng giá", "url": "./#bang-gia", "icons": [{ "src": "images/app/app-192.png", "sizes": "192x192" }] }
+  ]
+}
